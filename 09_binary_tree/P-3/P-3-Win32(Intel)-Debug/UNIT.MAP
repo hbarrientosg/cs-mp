@@ -1,0 +1,25 @@
+SOURCE: ..\..\arbolbin.adb
+  SRCTIME: 1054224892    Thu May 29 15:14:52 2003
+  UNIT: Arbol_Bin
+    UKIND: 8    PKG_BODY
+ENDSOURCE
+SOURCE: ..\..\prac03.ada
+  SRCTIME: 1054224899    Thu May 29 15:14:59 2003
+  UNIT: Prueba
+    UKIND: 2    SUBP_BODY
+ENDSOURCE
+SOURCE: ..\..\prac03.adb
+  SRCTIME: 1054299953    Fri May 30 12:05:53 2003
+  UNIT: Conjunto_de_palabras
+    UKIND: 8    PKG_BODY
+ENDSOURCE
+SOURCE: ..\..\arbolbin.ads
+  SRCTIME: 1054224896    Thu May 29 15:14:56 2003
+  UNIT: Arbol_Bin
+    UKIND: 9    PKG_GENERIC
+ENDSOURCE
+SOURCE: ..\..\prac03.ads
+  SRCTIME: 1054224904    Thu May 29 15:15:04 2003
+  UNIT: Conjunto_de_palabras
+    UKIND: 7    PKG_DECL
+ENDSOURCE

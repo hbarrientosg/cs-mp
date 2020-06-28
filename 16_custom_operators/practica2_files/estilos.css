@@ -1,0 +1,304 @@
+body {
+	color: black;
+	background:#FFFFCC ; 
+	font-family: Garamond, sans-serif;
+}
+/*
+p {
+   margin-top: 0;
+  margin-bottom: 0;
+   padding : 0 0;
+ }*/
+
+  
+h1, .titulo {
+    font-size : 150%;
+  	font-family: sans-serif  , "Times New Roman"; 
+  	width: 100%;
+   	color: #ffffff;
+   	background: #000099;
+   	text-align: center;
+   	font-weight : normal;
+	border: none;
+	border-width: thin;
+}
+H1 A, .titulo A{
+	color : Yellow;
+	background-color : #000099;
+}
+.titulo1{
+font-size : 150%;
+  	font-family: sans-serif  , "Times New Roman"; 
+  	width: 50%;
+   	color: #ffffff;
+   	background: #000099;
+   	text-align: center;
+   	font-weight : normal;
+	border: none;
+	border-width: thin;
+}
+.titulo2 {
+	font-size : 130%;
+  	 font-family: sans-serif  , "Times New Roman"; 
+  	 width: 50%;
+   	color: #000000;
+   	background: #FFCC99;
+   	text-align: center;
+   	font-weight : normal;
+	border: none;
+	border-width: thin;
+}
+
+h2, .subtitulo {
+	font-size: 120%;
+	/*margin-left: 4%;*/
+	font-family: "Garamond", "Times New Roman", serif;
+	border: none;
+	border-width: thin;
+	width: 100%;
+	color: Navy;
+	background: #FFFF99;
+	font-weight : bold;
+}
+h3, .apartado {
+	font-size: 110%;
+/* margin-left: 6%; */
+    font-weight : bold;
+ 	font-family: "Garamond", "Times New Roman", serif;
+	padding-bottom : 0%;
+	text-decoration : underline;
+ }
+h4 {
+	font-size: 100%;
+/* margin-left: 7%; */
+ }
+h5 {
+	font-size: 90%;
+/* margin-left: 7%; */
+ }
+ h6 {
+ 	font-size: 80%;
+/* margin-left: 7%; */
+ }
+ A:hover {
+       color: Blue;
+		background : #33FF99; 
+}
+.boton A:hover {
+		background : Yellow;
+		color : #000099;
+		font-family : "Arial", "Times New Roman",sans-serif ;
+		text-align : center;
+		text-decoration : none;
+		font-size : 105%;
+		display: block;
+		border-bottom :3px  solid Teal;
+		border-left : 3px solid #FFFFE1;
+		border-right : 3px solid Teal;
+		border-top : 3px solid #FFFFE1;
+}
+.boton A:active {
+		background : Yellow;
+		color : #000099;
+		font-family : "Arial", "Times New Roman",sans-serif ;
+		text-align : center;
+		text-decoration : none;
+		font-size : 105%;
+		display: block;
+				border-bottom :3px  solid #FFFFE1;
+		border-left : 3px solid Teal;
+		border-right : 3px solid #FFFFE1;
+		border-top : 3px solid Teal;
+}
+.boton A {
+		background : #000099;
+		color : Yellow;
+		font-family :"Arial", "Times New Roman",sans-serif ;
+		text-align : center;
+		text-decoration : none;
+		font-size : 105%;
+		display: block;
+		border-bottom :3px  solid #000099;
+		border-left : 3px solid #000099;
+		border-right : 3px solid #000099;
+		border-top : 3px solid #000099;
+}
+.boton1 A:hover {
+		background : #E5E5AF;
+		color : Navy;
+		font-family :"Arial", "Times New Roman",sans-serif ;
+		text-align : center;
+		text-decoration : none;
+	    font-size : 105%;
+		display: block;
+		border-bottom :3px  solid Black;
+		border-left : 3px solid #FFFF99;
+		border-right : 3px solid Black;
+		border-top : 3px solid #FFFF99;
+		font-weight : bold;
+}
+.boton1 A:active {
+		background : #CCCC66;
+		color : blue;
+		font-family : "Arial", "Times New Roman",sans-serif ;
+		text-align : center;
+		text-decoration : none;
+		font-size : 105%;
+		display: block;
+		border-bottom : 3px solid #FFFF99;
+		border-left : 3px solid Black ;
+		border-right : 3px solid #FFFF99;
+		border-top : 3px solid Black ;
+		font-weight : bold;
+}
+.boton1 A {
+		background : #CCCC66;
+		color : blue;
+		font-family :"Arial", "Times New Roman",sans-serif ;
+		text-align : center;
+		text-decoration : none;
+	    font-size : 105%;
+		display: block;
+		border-bottom :3px  solid Black;
+		border-left : 3px solid #FFFF99;
+		border-right : 3px solid Black;
+		border-top : 3px solid #FFFF99;
+		font-weight : bold;
+}
+.boton2 A:hover {
+		background : #CCCC66;
+		color : Navy;
+		font-family :"Arial", "Times New Roman",sans-serif ;
+		text-align : center;
+		text-decoration : none;
+	    font-size : 105%;
+		display: block;
+		border-bottom :3px  solid Black;
+		border-left : 3px solid #FFFF99;
+		border-right : 3px solid Black;
+		border-top : 3px solid #FFFF99;
+		font-weight : bold;
+}
+.boton2 A:active {
+		background : #CCCC66;
+		color : blue;
+		font-family : "Arial", "Times New Roman",sans-serif ;
+		text-align : center;
+		text-decoration : none;
+		font-size : 105%;
+		display: block;
+		border-bottom : 3px solid #FFFF99;
+		border-left : 3px solid Black ;
+		border-right : 3px solid #FFFF99;
+		border-top : 3px solid Black ;
+		font-weight : bold;
+}
+.boton2 A {
+		background : #FFCC33;
+		color : blue;
+		font-family :"Arial", "Times New Roman",sans-serif ;
+		text-align : center;
+		text-decoration : none;
+	    font-size : 105%;
+		display: block;
+		border-bottom :3px  solid #CCCC66;
+		border-left : 3px solid #CCCC66;
+		border-right : 3px solid #CCCC66;
+		border-top : 3px solid #CCCC66;
+		font-weight : bold;
+}
+
+UL { 
+	list-style-image: url(/graficas/bolaazul.gif);
+ 	list-style-position : outside;
+}
+UL UL {
+ 	list-style-image: url(/graficas/bolaverde.gif) ;
+  }
+ UL.bolaazul { 
+	list-style-image: url(/graficas/ball_blue.gif);
+ 	list-style-position : outside;
+}
+UL.bolaverde { 
+	list-style-image: url(/graficas/ball_green.gif);
+ 	list-style-position : outside;
+}
+UL.bolaroja { 
+	list-style-image: url(/graficas/bolaroja.gif);
+ 	list-style-position : outside;
+}
+UL.romboazul { 
+	list-style-image: url(/graficas/rombo.gif);
+ 	list-style-position : outside;
+}
+UL.toc { 
+	list-style-image: url(/graficas/rombo.gif);
+ 	list-style-position : inside;
+	margin : 5px;
+}
+UL.flecha { 
+	list-style-image: url(/graficas/next.gif);
+ 	list-style-position : outside;
+}
+
+ .menu {
+	background-color : #FFCC99;
+	color: Black;
+}
+ .menu1{
+	background-color : #FFCC99;
+	color: Navy;
+}
+ .menu1 A{
+	background-color : #FFCC99;
+	color: Navy;
+}
+.menuclave {
+	background-color : #FFCC33;
+}
+
+.encabezadotabla {
+	background: Aqua;
+	color: Black;
+	text-transform : capitalize;
+	font-family : serif;
+	font-weight : bold;
+}
+ .grande {
+	font-size : 130%;
+}
+.pie {
+	background: Aqua;
+}
+.chico {
+ 	font-family: "Arial", "Helvetica", sans-serif;
+	font-size: 70%;
+ }
+.mediano {
+ 	font-family: "Arial", "Helvetica", sans-serif;
+ 	font-size: 9pt;
+   	color: #FFF8E0;
+   background-color : transparent;
+ }
+.algoritmo {
+	border-style : solid;
+	color : Black;
+	margin : 10px;
+	background-color : White;
+	border : thin solid;
+	width : auto;
+	border-width : thin 0px thin 0px;
+}
+.comentario{
+	color : Green;
+}
+.importante {
+	border-style : solid;
+	color : Black;
+	font-family : Arial,sans-serif;
+	margin : 10px;
+	background-color : #F0F8FF;
+	border : thin solid Navy;
+	width : auto;
+	border-width : thin thin thin thin;
+}

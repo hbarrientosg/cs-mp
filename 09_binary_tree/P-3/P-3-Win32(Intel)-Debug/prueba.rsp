@@ -1,0 +1,22 @@
+/NOLOGO
+/VERSION:3.273
+/STACK:65536,8192
+/SUBSYSTEM:CONSOLE
+/OPT:REF
+/PDB:NONE
+/DEBUG
+/DEBUGTYPE:cv
+/OUT:prueba.exe
+obj\elt\prueba.obj
+prueba.compopts.obj
+obj\ads\arbolbin.obj
+obj\adb\arbolbin.obj
+obj\ads\prac03.obj
+obj\adb\prac03.obj
+obj\ada\prac03.obj
+"..\..\..\..\..\..\..\..\archivos de programa\aonix\objectada\lib\crtpexe.obj"
+"..\..\..\..\..\..\..\..\archivos de programa\aonix\objectada\lib\adamain.lib"
+"..\..\..\..\..\..\..\..\archivos de programa\aonix\objectada\lib\kernel32.lib"
+"..\..\..\..\..\..\..\..\archivos de programa\aonix\objectada\lib\ntstub.lib"
+rts.lib
+/LIBPATH:"..\..\..\..\..\..\..\..\archivos de programa\aonix\objectada\lib"

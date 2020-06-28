@@ -1,0 +1,20 @@
+/NOLOGO
+/VERSION:3.273
+/STACK:65536,8192
+/SUBSYSTEM:CONSOLE
+/OPT:REF
+/PDB:NONE
+/DEBUG
+/DEBUGTYPE:cv
+/OUT:prueba_colas.exe
+obj\elt\prueba_colas.obj
+prueba_colas.compopts.obj
+obj\ads\dim.obj
+obj\adb\dim.obj
+obj\ada\prac02d.obj
+"e:\archivos de programa\aonix\objectada\lib\crtpexe.obj"
+"e:\archivos de programa\aonix\objectada\lib\adamain.lib"
+"e:\archivos de programa\aonix\objectada\lib\kernel32.lib"
+"e:\archivos de programa\aonix\objectada\lib\ntstub.lib"
+rts.lib
+/LIBPATH:"e:\archivos de programa\aonix\objectada\lib"

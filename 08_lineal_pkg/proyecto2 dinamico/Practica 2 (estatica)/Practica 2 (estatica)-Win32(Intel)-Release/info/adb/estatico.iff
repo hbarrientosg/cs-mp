@@ -1,0 +1,5 @@
+SOURCE: ..\..\..\estatico.adb
+  SRCTIME: 1050860528    Sun Apr 20 16:42:08 2003
+  COMPSW: adacomp SRC -a
+COMPVER: 3.273
+MAXSEV: -1

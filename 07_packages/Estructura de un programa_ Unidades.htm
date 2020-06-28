@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0052)http://www.gedlc.ulpgc.es/docencia/NGA/unidades.html -->
+<HTML><HEAD><TITLE>Estructura de un programa. Unidades.</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="Zenón Hernández Figueroa" name=Author><LINK class="titulo 2" 
+href="Estructura de un programa_ Unidades_archivos/estilos.css" type=text/css 
+rel=stylesheet><LINK 
+href="Estructura de un programa_ Unidades_archivos/estilos.css" type=text/css 
+rel=stylesheet>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY>Anterior | Superior | Siguiente 
+<H1 class=titulo>Guía de referencia básica de Ada 95</H1>
+<H1 class=titulo2>Estructura de un programa. Unidades</H1>
+<H2><A name=Unidades></A>Unidades de programa, compilación y librería.</H2>Un 
+programa en Ada se estructura como un conjunto de <I>unidades de programa</I>, 
+pueden ser: 
+<OL>
+  <LI><B>subprogramas</B>, hay dos clases (procedimientos y funciones) y sirven 
+  para definir algoritmos. 
+  <LI><B>paquetes</B>, sirven para agrupar conjuntos de entidades relacionadas. 
+  <LI><B>tareas</B>, definen acciones que pueden ejecutarse en paralelo con 
+  otras. 
+  <LI><B>unidades protegidas</B>, sirven para coordinar la compartición de datos 
+  entre unidades que se ejecutan en concurrencia. 
+  <LI><B>unidades genéricas</B>, son subprogramas o paquetes parametrizados que 
+  definen componentes reusables. </LI></OL>Las unidades de programa pueden 
+anidarse unas dentro de otras, pero sólo los <I><A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/subprogramas.html#definicion">subprogramas</A></I>, 
+<I><A href="http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html">paquetes</A> 
+</I>(especificación e implementación) y <I><A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/unidades.html#genericas">unidades 
+genéricas</A> </I>pueden ocupar el nivel más externo de anidamiento y formar una 
+<I>unidad de compilación</I>. Una unidad de compilación es un componente de un 
+programa que puede compilarse por separado. Se distinguen dos clases de unidades 
+de compilación: las <I>subunidades</I>, que se encuentran lógicamente incluidas 
+en otro componente y se introducen siempre con la palabra <B>separate</B>, y las 
+<I>unidades de librería</I>, que son componentes independientes que pueden 
+usarse en distintos programas. 
+<P class=Truco><A name=principal>Un <I>subprograma principal</I> inicia y 
+gobierna la ejecución de un programa y desde él&nbsp; se desencadena la 
+ejecución del resto de unidades que lo componen. Generalmente, el subprograma 
+principal es un </A><A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/subprogramas.html#definicion">procedimiento</A> 
+sin parámetros. Implementaciones particulares del lenguaje pueden admitir otro 
+tipo de subprogramas como &nbsp;subprograma principal. </P>
+<P>Una unidad de compilación típica consta de dos partes: (1) una <I>cláusula de 
+contexto</I> que sirve para especificar las unidades de librería que se 
+necesitan (no hace falta si no se necesita ninguna) y (2) una unidad de programa 
+(subprograma, paquete o unidad genérica). El siguiente ejemplo muestra una 
+unidad de compilación que proporciona un procedimiento sin parámetros llamado 
+<I>"Hola"</I> que puede servir como subprograma principal de un programa o como 
+unidad de librería utilizable como parte de un programa más complejo.</P>
+<P class=algoritmo><B>with</B> Text_Io; --Cláusula de contexto <BR><B>use</B> 
+Text_Io;<BR><B><BR>procedure</B> Hola <B>is </B>--Elemento de librería 
+(subprograma) <BR><B>begin</B><BR>&nbsp; &nbsp; Put_Line("Hola mundo"); 
+<BR><B>end</B> Hola;</P>
+<P>La cláusula de contexto, si aparece, consta obligatoriamente de una 
+cláusula<I> with</I> que es la que especifica, separadas por comas (","), las 
+unidades de librería que se necesitan. En el ejemplo, la cláusula <I>with</I> 
+especifica que se va a necesitar la unidad de librería <I>"Text_Io"</I> que es 
+la que define el procedimiento <I>"Put_Line" </I>usado en el procedimiento 
+<I>"Hola"</I> para escribir un saludo en la salida estándar.</P>
+<P>Opcionalmente, se puede emplear además, una cláusula<I> use</I> para 
+especificar unidades de librería que se van a usar con frecuencia, de manera que 
+no sea necesario indicar el nombre de la unidad cada vez que se use un elemento 
+de la misma. En el ejemplo, de no haberse incluido la cláusula <I>use</I>, 
+tendría que haberse escrito:</P>
+<P class=algoritmo><B>with</B> Text_Io; --Cláusula de 
+contexto<BR><B><BR>procedure</B> Hola <B>is </B>--Elemento de librería 
+(subprograma)<BR><B>begin</B><BR>&nbsp; &nbsp; Text_Io.Put_Line("Hola 
+mundo");<BR><B>end</B> Hola;</P>
+<P>La cláusula <I>use</I> ahorra trabajo y hace que los programas parezcan menos 
+densos. La cláusula <I>use</I> puede ponerse también en cualquier lugar entre 
+las declaraciones de la unidad de programa, aunque ello reduce el alcance de su 
+efecto.<BR></P>
+<P>En el caso de que la unidad de librería incluida en el <I>with </I>sea un 
+subprograma, no tiene sentido ponerla en una cláusula <I>use </I>ya que carece 
+de elementos que puedan ser referenciados individualmente.</P>
+<P class=algoritmo><B>with</B> Hola; --Cláusula de 
+contexto<BR><B><BR>procedure</B> Hola_2 <B>is </B>--Elemento de librería 
+(subprograma)<BR><B>begin</B><BR>&nbsp; &nbsp; Hola; --Llamada al procedimiento 
+"Hola" incluido como<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; --unidad de 
+librería en la cláusula de contexto<BR><B>end</B> Hola;</P>
+<H2 class=NivelMedio><A name=genericas></A>Unidades genéricas.</H2>Ada permite 
+crear unidades genéricas, es decir, con parámetros que se pueden concretar para 
+diferentes instancias de la unidad, consiguiendo de esta manera la reutilización 
+de un código que se escribe una sola vez. Para ello basta anteceder la 
+declaración de la unidad correspondiente con la palabra <I>"generic"</I>; los 
+parámetros formales de la unidad se sitúan en la zona comprendida entre la 
+palabra <I>"generic"</I> y el comienzo de la declaración de la unidad. Sólo los 
+<A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/subprogramas.html#genericos">subprogramas</A> 
+y los <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html#genericos">paquetes</A> 
+admiten genericidad. 
+<P class=algoritmo><B>generic</B><BR>&lt;parámentros formales 
+genéricos&gt;<BR>&lt;unidad genérica&gt;</P>
+<H3><A name=par_formales></A>Parámetros formales genéricos.</H3>Los parámetros 
+formales genéricos pueden ser: objetos, tipos o subprogramas. Al igual que los 
+parámetros formales de los subprogramas, algunas clases de parámetros formales 
+genéricos pueden tener un valor por defecto. Los parámetros formales genéricos 
+se declaran de distinta forma según su naturaleza: 
+<OL>
+  <LI><B>Parámetros por valor.</B> Se declaran como: <I>&lt;nombre&gt;: 
+  &lt;tipo&gt; := &lt;valor por defecto</I>&gt;, siendo el valor por defecto 
+  opcional. 
+  <P class=algoritmo>Valor1: integer;<BR>Valor2: positive := 1;</P>
+  <LI><B>Tipos <A 
+  href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_general.html#privados">privados</A>:</B> 
+  "private", "limited private", "tagged private",... La definición del tipo 
+  privado corresponde, en este caso, al llamador (no va a aparecer en la parte 
+  <I>private</I>, si estamos desarrollando un paquete). 
+  <P class=algoritmo><B>type</B> Tipo1 <B>is private</B>;<BR><B>type</B> Tipo2 
+  <B>is limited private</B>;<BR><B>type</B> Tipo3 <B>is tagged 
+  private</B>;<BR><B>type</B> Tipo4 <B>is tagged limited 
+  private;</B><BR><B>type</B> Tipo5 <B>is new</B> OtroTipoTagged <B>with 
+  private</B> ;<BR>...</P>
+  <LI><B>Tipos <A 
+  href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_escalares.html">escalares</A>:</B> 
+
+  <OL>
+    <LI><I>Discretos</I>. Se utiliza el símbolo "(&lt;&gt;)". 
+    <LI><I>Enteros con signo</I>. Se utiliza "range &lt;&gt;". 
+    <LI><I>Modulares.</I> Se utiliza "mod &lt;&gt;". 
+    <LI><I>Reales en coma flotante</I>. Se utiliza "digits &lt;&gt;". 
+    <LI><I>Reales en coma fija.</I> Se utiliza "delta &lt;&gt;". 
+    <LI><I>Decimales</I>. Se utiliza "delta &lt;&gt; digits &lt;&gt;". 
+    <P class=algoritmo><B>type</B> TDiscreto <B>is</B> (&lt;&gt;); 
+    <BR><B>type</B> TEntero <B>is range</B> &lt;&gt;; <BR><B>type</B> TModular 
+    <B>is mod</B> &lt;&gt;; <BR><B>type</B> TRealFlot <B>is digits</B> &lt;&gt;; 
+    <BR><B>type</B> TRealfijo <B>is delta</B> &lt;&gt;; <BR><B>type</B> TDecimal 
+    <B>is delta</B> &lt;&gt; <B>digits</B> &lt;&gt;;</P></LI></OL>
+  <LI><B><A 
+  href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_estructurados.html#homo">Arrays</A>.</B> 
+  Hay que especificar el tipo de los índices y el tipo de los elementos que 
+  pueden ser a su vez parámetros formales genéricos declarados previamente: 
+  <P class=algoritmo><B>type</B> TElemento <B>is private</B>; <BR><B>type</B> 
+  Índice <B>is</B> (&lt;&gt;); <BR><B>type</B> Vector <B>is array</B> (Índice 
+  <B>range</B> &lt;&gt;) <B>of</B> TElemento;</P>
+  <LI><B><A 
+  href="http://www.gedlc.ulpgc.es/docencia/NGA/punteros.html">Punteros</A>.</B> 
+  Hay que especificar el tipo apuntado que puede ser un parámetro formal 
+  genérico declarado previamente: 
+  <P class=algoritmo><B>type</B> TNodo <B>is private</B>; <BR><B>type</B> 
+  TP_Nodo <B>is access</B> TNodo;</P>
+  <LI><B><A 
+  href="http://www.gedlc.ulpgc.es/docencia/NGA/subprogramas.html">Subprogramas</A>.</B> 
+  Se utiliza la palabra "with" precediendo al protocolo del subprograma que se 
+  espera: 
+  <P class=algoritmo><B>type</B> TElemento <B>is private</B>; <BR><B>with 
+  procedure</B> Acción(X : <B>in</B> TElemento);</P>
+  <P>Se puede especificar un nombre por defecto para el subprograma pasado por 
+  parámetro, utilizando <I>"is &lt;nombre&gt;"</I>:</P>
+  <P class=algoritmo><B>with procedure</B> Acción (X : <B>in</B> TElemento) 
+  <B>is</B> Escribir;</P>
+  <P>Si se quiere que el nombre por defecto sea el mismo que el del parámetro 
+  formal, se pondrá como nombre "&lt;&gt;":</P>
+  <P class=algoritmo><B>with procedure</B> Acción (X : <B>in</B> TElemento) 
+  <B>is</B> &lt;&gt;;</P>
+  <P>En caso de especificar un nombre por defecto se podrá omitir el parámetro 
+  al instanciar la unidad.</P>
+  <LI><B><A 
+  href="http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html">Paquetes</A>.</B> 
+  Se utiliza la palabra <I>"with"</I> precediendo a la instanciación del paquete 
+  que queremos como parámetro formal. 
+  <P class=algoritmo><B>with package</B> &lt;Nombre_formal&gt; <B>is new</B> 
+  &lt;Nombre_genérico&gt; (&lt;&gt;);</P>
+  <H3>Instanciación de unidades genéricas.</H3>
+  <P>Las unidades genéricas representan una plantilla mediante la cual se indica 
+  al compilador cómo poder crear (en distintas situaciones configuradas por los 
+  parámentros) unidades no genéricas que responden al mismo funcionamiento 
+  general. De esta forma, las unidades genéricas no se usan directamente, sino 
+  sólo para crear instancias no genéricas a partir de ellas. Para crear una 
+  instancia de una unidad genérica hay que especificar un nombre para la unidad 
+  no génerica que el compilador va a construir y los parámetros reales genéricos 
+  a utilizar en el lugar de los formales:</P>
+  <P class=algoritmo><B>&lt;tipo unidad&gt;</B> &lt;nombre de la instancia&gt; 
+  <B>is new</B> &lt;nombre unidad genérica&gt; (&lt;parámetros reales 
+  genéricos&gt;);</P>
+  <P>Los parámetros reales genéricos se corresponden con los formales por 
+  posición o por nombre si se utiliza el símbolo "=&gt;". No es necesario 
+  proporcionar parámetros reales para los formales que tengan un valor por 
+  defecto (cuando sea adecuado para el propósito de la instancia).</P></LI></OL>
+<DIV class=pie>Grupo de Estructuras de Datos y Lingüística Computacional - 
+ULPGC.</DIV>
+<P>Anterior | Superior | Siguiente</P><BR></BODY></HTML>

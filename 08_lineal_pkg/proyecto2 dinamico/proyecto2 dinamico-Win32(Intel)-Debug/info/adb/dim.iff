@@ -1,0 +1,23 @@
+SOURCE: ..\..\dim.adb
+  SRCTIME: 1050507660    Wed Apr 16 14:41:00 2003
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+SRCDEP: src\unchecked_deallocation.ada
+  SRCDEPTIME: 857457980    Tue Mar 04 05:46:20 1997
+SRCDEP: src\ada.ada
+  SRCDEPTIME: 918049390    Wed Feb 03 12:43:10 1999
+SRCDEP: ..\..\dim.ads
+  SRCDEPTIME: 1050507658    Wed Apr 16 14:40:58 2003
+UNIT: Colas_dinámicas
+  UKIND: 8    PKG_BODY
+  DEP: Colas_dinámicas
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\dim.ads
+    DEPSRCTIME: 1050507658    Wed Apr 16 14:40:58 2003
+  DEP: Unchecked_Deallocation
+    DEPKIND: 6    SUBP_GENERIC_RENAME
+    DEPSRC: src\unchecked_deallocation.ada
+    DEPSRCTIME: 857457980    Tue Mar 04 05:46:20 1997
+  FEATURES: 16#8000000002800#(-1,-1,-1,-1,-1,-1)
+  ELABLINKNAME: colas_dinámicas__elab_subp
+ENDUNIT

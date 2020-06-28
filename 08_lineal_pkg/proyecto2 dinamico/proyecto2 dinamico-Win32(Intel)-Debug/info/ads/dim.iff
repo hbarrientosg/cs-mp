@@ -1,0 +1,9 @@
+SOURCE: ..\..\dim.ads
+  SRCTIME: 1050507658    Wed Apr 16 14:40:58 2003
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+UNIT: Colas_dinámicas
+  UKIND: 9    PKG_GENERIC
+  NEED: Colas_dinámicas
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT

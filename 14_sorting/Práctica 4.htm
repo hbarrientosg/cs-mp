@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0077)http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/practica4.html -->
+<HTML><HEAD><TITLE>Práctica 4</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="JC y MD" name=Author><LINK href="Práctica 4_archivos/estilos.css" 
+type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2800.1276" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=titulo1>Prácticas de Metodología de la Programación II y 
+      Tecnología de la Programación</TD>
+    <TD class=titulo2>Práctica 4: Comparación<BR>de métodos<BR>de 
+      ordenación<BR>(Valoración 40%)</TD>
+    <TD>
+      <DIV align=right><A title=GAP 
+      href="http://www.gedlc.ulpgc.es/cgi-bin/gap/mp2.20032004/gap?menu"><IMG 
+      alt=GAP src="Práctica 4_archivos/gap" 
+border=0></A></DIV></TD></TR></TBODY></TABLE>
+<H3><IMG height=32 src="Práctica 4_archivos/animarrowv2.gif" width=32> <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/FAQComparacion.html">Preguntas 
+frecuentes sobre la práctica</A></H3>
+<H2>Objetivos Didácticos</H2>Los objetivos son: que el alumno contraste los 
+resultados empíricos obtenidos en el laboratorio con los análisis teóricos 
+realizados sobre dos algoritmos que resuelven el mismo problema y que desarrolle 
+un programa en lenguaje C para obtener los datos necesarios para hacer la 
+comparación.
+<H2>Descripción</H2>
+<UL>
+  <LI>De un <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/ordenacion/index.html">conjunto 
+  de 20 métodos de ordenación</A> a cada alumno se le asignan <A 
+  href="http://www.gedlc.ulpgc.es/cgi-bin/gap/mp2.20032004/gap?practicaListadoEntregarVer">dos 
+  métodos</A> que debe implementar. 
+  <LI>Se escribirán dos procedimientos en lenguaje C que implementen los métodos 
+  de ordenación asignados. Estos procedimientos ordenarán un vector de enteros 
+  pasado por parámetro, además de calcular datos estadísticos sobre la 
+  ordenación. 
+  <P>Los datos a calcular son:</P>
+  <UL>
+    <LI>Tiempo en segundos que tarda en ejecutarse la ordenación. 
+    <LI>Número de comparaciones. 
+    <LI>Número de movimientos. </LI></UL>
+  <P>El prototipado y nombre de los procedimientos de ordenación es:</P><PRE class=algoritmo><B>void</B> Metodo1(<B>int</B> vec[], <B>int</B> n, <B>int</B> *ncomp, <B>int</B> *nmov, <B>float</B> *tiempo);</PRE>
+  <P></P><PRE class=algoritmo><B>void</B> Metodo2(<B>int</B> vec[],<B> int</B> n, <B>int</B> *ncomp, <B>int</B> *nmov, <B>float</B> *tiempo);</PRE>
+  <UL>
+    <LI>Se contabiliza una comparación, cuando en ella interviene al menos un 
+    elemento de un vector. 
+    <LI>Se considera un movimiento, cuando se asignan elementos de un vector al 
+    mismo o a otro vector. 
+    <LI>Se deben contabilizar los intercambios de dos elementos de un vector. 
+    Cada intercambio se cuenta como dos movimientos. Normalmente aparecen en el 
+    algoritmo con el signo "&lt;-&gt;". 
+    <LI>Algunos métodos usan un vector de entrada y otro de salida, en este caso 
+    deberá adaptar el método para que cumpla la especificación anterior. 
+    <LI>Para los métodos recursivos el procedimiento anterior hace de interfaz 
+    para llamar a éstos. </LI></UL>
+  <LI>Se escribirá un programa en lenguaje C que, llamando repetidas veces a los 
+  procedimientos anteriores, calcule los parámetros anteriores para los 
+  siguientes tamaños de vectores: 1.000, 2.000, 4.000, 8.000, 16.000, 
+  32.000.<BR>Todo ello para ejemplares ordenados inversamente y ejemplares 
+  desordenados. <B>En el caso de vectores desordenados, los parámetros medidos 
+  se obtendrán de calcular la media de 10 pruebas realizadas para cada tamaño de 
+  ejemplar.</B> </LI></UL>
+<P>Como resultado de la ejecución del programa, para cada método, se debe 
+generar <B>por pantalla</B> un cuadro con el siguiente formato:</P>
+<TABLE border=0>
+  <TBODY>
+  <TR>
+    <TD></TD>
+    <TD align=middle colSpan=3>Vector inversamente ordenado</TD>
+    <TD align=middle colSpan=3>Vector aleatorio</TD></TR>
+  <TR>
+    <TD></TD>
+    <TD>Tiempo</TD>
+    <TD>Comparaciones</TD>
+    <TD>Movimientos</TD>
+    <TD>Tiempo</TD>
+    <TD>Comparaciones</TD>
+    <TD>Movimientos</TD></TR>
+  <TR align=right>
+    <TD align=right>1000</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD></TR>
+  <TR align=right>
+    <TD align=right>2000</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD></TR>
+  <TR align=right>
+    <TD align=right>4000</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD></TR>
+  <TR align=right>
+    <TD align=right>8000</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD>
+    <TD>xxxx</TD></TR>
+  <TR>
+    <TD align=right>16000</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD></TR>
+  <TR>
+    <TD align=right>32000</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD>
+    <TD align=right>xxxx</TD></TR></TBODY></TABLE>
+<TABLE border=1>
+  <TBODY>
+  <TR>
+    <TD>Para lograr un formateo adecuado de la tabla haga lo siguiente: en la 
+      ristra de formato del "printf()" especifique el número de caracteres a 
+      mostrar para cada dato. Para especificar el número de caracteres a 
+      mostrar, éste se intercala entre el % y el tipo de dato. En los números en 
+      coma flotante se puede establecer el número de decimales que se desea, 
+      escribiendo después del número de caracteres a mostrar un punto y el 
+      número de decimales. El número de decimales y el punto están 
+      contabilizados dentro del número de caracteres a mostrar. Cuando la 
+      representación del dato no ocupa el número de caracteres indicado se 
+      rellena con espacios. 
+      <P>Ejemplo:</P><PRE class=algoritmo><B>int</B> i=10;
+<B>float</B> f=3.1415;
+...
+printf("%6d %5.2f\n",i,f);
+<SPAN class=comentario>/*Se muestra i ocupando 6 caracteres, un espacio y se muestra f con 5 caracteres, 2
+para la mantisa, el punto y dos para los decimales */</SPAN></PRE></TD></TR></TBODY></TABLE>
+<P>Además del cuadro anterior, se deben realizar gráficas que comparen los 
+resultados obtenidos para uno y otro método, para vectores ordenados 
+aleatoriamente. Ejemplo:<BR></P>
+<CENTER><IMG height=318 src="Práctica 4_archivos/ndprac2.gif" width=446 
+border=0></CENTER>Las gráficas deben tener en el eje <I>x</I> el número de datos 
+y en el eje <I>y</I> el valor del parámetro que se mide. Ambos ejes deben tener 
+<B>escala lineal</B>. En la obtención de la gráfica se recomienda el uso de una 
+hoja de cálculo, como puede ser "Excel", el tipo de gráfica que se pide se 
+denomina normalmente <B>XY o dispersión</B>. 
+<H2>Autocomprobación</H2>
+<P>Para verificar que los métodos de ordenación están correctamente 
+implementados se les suministran dos procedimientos: 
+<EM><STRONG>InicializaVector</STRONG></EM> y 
+<STRONG><EM>CompruebaVector</EM></STRONG>. <EM>InicializaVector</EM> se utiliza 
+para inicializar adecuadamente los vectores y para que <I>CompruebaVector</I> 
+pueda hacer su trabajo. <EM>CompruebaVector</EM> se encarga de comprobar que el 
+vector está ordenado y que están todos los elementos introducidos por 
+<EM>InicializaVector</EM>. Estos procedimientos se suministran en el módulo 
+<EM>convect</EM>, compuesto por los ficheros: <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/compvect.h">compvect.h</A> 
+y <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/compvect.c">compvect.c</A>.<BR></P>
+<H2><A name=Entrega></A>Entrega de la práctica</H2>El alumno debe entregar como 
+resultado de la práctica lo siguiente: 
+<OL>
+  <LI>Los dos ficheros de la implementación de cada método de ordenación. Estos 
+  ficheros se deben llamar "<STRONG>metodo1.c</STRONG>" y 
+  "<STRONG>metodo2.c</STRONG>" donde se implementarán el primer y segundo método 
+  asignado. 
+  <LI>El fichero donde se encuentra la función <STRONG>main</STRONG> el cual se 
+  debe llamar "<STRONG>principal.c</STRONG>". 
+  <LI>Un fichero texto (sin formato de editor) con el cuadro de resultados 
+  obtenidos en las pruebas, el cual se debe llamar "resultados.txt". El fichero 
+  "<B>resultados.txt</B>" se obtiene de ejecutar el programa desde la línea de 
+  comandos e indicando que la salida por pantalla se desvíe al fichero. Ejecute 
+  desde la línea de comandos "<B>principal&nbsp;&gt;&nbsp;resultados.txt</B>". 
+  <LI>Las tres gráficas en formato gif (máximo 25Kb) de los resultados del 
+  vector con orden aleatorio. 
+  <LI>El resto de los ficheros fuente, ".c" y ".h" empleados, exceptuando 
+  "compvect.h" y "compvect.c". 
+  <LI>El fichero "makefile" empleado. </LI></OL>
+<P>Para obtener los ficheros de las gráficas en una hoja de cálculo genere las 
+gráficas y después solicite que se almacene la hoja de cálculo en formato HTML. 
+Si esta operación no funciona copie y pegue las gráficas en otra aplicación que 
+sí lo haga correctamente, por ejemplo Word, tome el documento con las gráficas y 
+conviértalo o guárdelo como HTML, en esta conversión se obtienen las gráficas en 
+formato "gif" que son las que hay que entregar.</P>
+<H2>Requisitos a cumplir por el programa</H2>
+<OL>
+  <LI>El programa debe funcionar correctamente.&nbsp; 
+  <LI>Debe tener un sangrado adecuado. 
+  <LI>Debe estar adecuadamente comentado. 
+  <LI>Debe hacer un uso correcto de los recursos. 
+  <LI>El código debe hacer un uso adecuado de las estructuras de control del 
+  lenguaje. 
+  <LI>Una única ejecución del programa debe dar los cuadros de resultados como 
+  se solicitan. 
+  <LI>Se requiere el uso del módulo "compvect" (<A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/compvect.h">compvect.h</A> 
+  y <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/compvect.c">compvect.c</A>) 
+  para comprobar el correcto funcionamiento de los métodos. 
+  <LI>Se deben respetar los nombres de ficheros, funciones y procedimientos, así 
+  como el tipo, posición y número de parámetros de las funciones y 
+  procedimientos solicitados en el enunciado. 
+  <LI>Las <B>funciones</B> de las bibliotecas que se empleen deben ser 
+  <B>compatibles ansi</B>. </LI></OL>
+<H3><IMG height=32 src="Práctica 4_archivos/animarrowv2.gif" width=32> <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/FAQComparacion.html">Preguntas 
+frecuentes sobre la práctica</A></H3></BODY></HTML>

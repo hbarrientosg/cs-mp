@@ -1,0 +1,247 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" type="text/css" href="ordenacion.css">
+  <title>Inserción Lineal con intercambio</title>
+</head>
+
+<body>
+<h1>8. Inserción Lineal con intercambio</h1>
+
+<h2>8.1 Método</h2>
+
+<p>    La inserción lineal con intercambio, comienza comparando cada elemento
+con el siguiente, hasta que se efectúa un intercambio. Hasta aquí opera la
+llamada <i>secuencia primaria</i>. La <i>secuencia secundaria</i> consiste en
+comparar el elemento intercambiado con los anteriores, hasta el primer
+elemento de la lista, si no ha encontrado antes su posición. El número de
+comparaciones secundarias, viene en función de las posiciones de los
+elementos intercambiados en la secuencia primaria. Si la comparación primaria
+trata a los elementos de las posiciones 6 y 7, el número de comparaciones
+secundarias que se efectuaran será como máximo de 5. El número máximo de
+ellas tendrá lugar cuando el elemento que se este tratando sea más pequeño
+que todos los anteriores. La ordenación termina cuando se hayan tratado todos
+los elementos. </p>
+
+<h2>8.2 Algoritmo</h2>
+<pre class="algoritmo"><b>procedimiento</b> inslinint (vec,n)
+<b>para</b> primaria <b>desde</b> 1 <b>hasta</b> n-1 <b>hacer</b>
+<b>   si</b> vec[primaria] &gt; vec[primaria+1] <b>entonces</b>
+      vec[primaria] &lt;-&gt; vec[primaria+1]
+      secund &lt;- primaria-1
+<b>      mientras</b> secund &gt;= 1 y vec[secund] &gt; vec[secund+1] <b>hacer</b>
+         vec[secund] &lt;-&gt; vec[secund+1]
+         secund &lt;- secund-1
+<b>      fin mientras</b>
+<b>   fin si</b>
+<b>fin para</b>
+<b>retorna</b>
+
+alternativa:
+<b>Procedimiento</b> inslinint(vec,n) 
+<b>para</b> p <b>desde</b> 2 <b>hasta</b> n <b>hacer</b>
+   s &lt;- p
+<b>   mientras</b> (vec[s] &lt; vec[s-1]) y (s &gt; 1) <b>hacer</b>
+      vec[s] &lt;-&gt; vec[s-1]
+      s &lt;- s-1
+<b>   fin mientras</b>
+<b>fin para</b></pre>
+
+<h2>8.3 Ejemplo</h2>
+
+<p>    Este método inicialmente compara los elementos de las posiciones 1 y
+2. Si no se produce ningún intercambio, el siguiente paso vuelve a ser una
+comparación primaria entre los elementos de las posiciones 2 y 3, como se
+produce un intercambio (el 6 y el 11), ahora la secuencia secundaria hace que
+el 6 sea comparado con los anteriores y se posicione en su lugar. </p>
+<pre class="cuadrotexto">    <u>inicial</u>
+<u>p1:2</u> <u>p2:3</u>  <u>s1:2</u>  <u>p3:4</u> <u>s2:3</u> <u>s1:2</u>
+1.     3     3 ]   3     3 ]   3     3     3 ]
+2.    11    11 ]   6 ]   6 ]   6     4 ]   4 ]
+3.     6     6    11 ]  11     4 ]   6 ]   6
+4.     4     4     4     4    11 ]  11    11
+5.     9     9     9     9     9     9     9
+6.     5     5     5     5     5     5     5
+7.     7     7     7     7     7     7     7
+8.     8     8     8     8     8     8     8
+9.    10    10    10    10    10    10    10
+10.    2     2     2     2     2     2     2
+11.    1     1     1     1     1     1     1</pre>
+
+<p>    La siguiente comparación se hace entre las posiciones 2 y 1. Como el 3
+es menor que el 6, no se produce ningún intercambio, y la secuencia
+secundaria finaliza. </p>
+
+<p>    El siguiente paso es otra comparación primaria, ahora entre 3:4; la
+posición 3 contiene el 11 que ha sido colocado ahí como resultado de un
+intercambio. Esta comparación produce un intercambio y como consecuencia el
+comienzo de otra secuencia secundaria entre 2:3, 1:2 para posicionar el 4. Y
+así sucesivamente. </p>
+<pre class="cuadrotexto"> p4:5  s3:4  p5:6  s4:5  s3:4  s2:3  p6:7  s5:6
+   3     3     3     3     3     3     3     3
+   4     4     4     4     4     4 ]   4     4
+   6     6 ]   6     6     5 ]   5 ]   5     5
+   9 ]   9 ]   9     5 ]   6 ]   6     6     6
+  11 ]  11     5 ]   9 ]   9     9     9     7 ]
+   5     5    11 ]  11    11    11     7 ]   9 ]
+   7     7     7     7     7     7    11 ]  11
+   8     8     8     8     8     8     8     8
+  10    10    10    10    10    10    10    10
+   2     2     2     2     2     2     2     2
+   1     1     1     1     1     1     1     1
+ 
+ s4:5  p7:8  s6:7  s5:6  p8:9  s7:8  p9:10  s8:9
+   3     3     3     3     3     3     3     3
+   4     4     4     4     4     4     4     4
+   5     5     5     5     5     5     5     5
+   6 ]   6     6     6     6     6     6     6
+   7 ]   7     7     7 ]   7     7     7     7
+   9     9     8 ]   8 ]   8     8     8     8
+  11     8 ]   9 ]   9     9     9 ]   9     9
+   8    11 ]  11    11    10 ]  10 ]  10     2 ]
+  10    10    10    10    11 ]  11     2 ]  10 ]
+   2     2     2     2     2     2    11 ]  11
+   1     1     1     1     1     1     1     1
+
+      s7:8  s6:7  s1:2
+        3     3     1
+        4     4     2
+        5     5     3
+        6     6     4
+        7     7     5
+        8     2 ]   6
+        2 ]   8 ]   7
+        9 ]   9     8
+       10    10     9
+       11    11    10
+        1     1    11</pre>
+
+<p>    Cuando el 2 llega a la posición 6, todavía le quedan 5 comparaciones
+más, y al termino de ellas quedara posicionado en el primer lugar. El último
+elemento, el 1, llegara a pasar 9 comparaciones secundarias e intercambios
+que harán que se posicione en la primera posición, y la lista quedara
+totalmente ordenada. </p>
+
+<h2>8.4 Discusión</h2>
+
+<p>    El mínimo número de comparaciones en una lista de <i>n</i> elementos
+es <i>n-1</i>. Esto ocurre cuando la lista esta ordenada. El número máximo de
+comparaciones ocurre cuando la lista esta en orden inverso. En ese caso cada
+una de las <i>n-1</i> comparaciones primarias, genera una secuencia de
+secundarias que se extiende desde el punto de la comparación primaria hasta
+el principio de la lista. El número máximo de comparaciones será: </p>
+
+<p><img src="metodo8.htg/img.gif" height="62" width="579"></p>
+
+<p>    Para determinar el número esperado de comparaciones, considérese el
+número de comparaciones para situar cada elemento de <i>vec</i> en su
+posición correcta: </p>
+
+<table cellpadding="0" cellspacing="0" border="1">
+  <tbody align="center" valign="middle">
+    <tr>
+      <td>Número de elemento<br>
+        a situar</td>
+      <td>NC<br>
+        secuencia secundaria</td>
+      <td>NCE<br>
+        secuencia primaria</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td><img src="metodo8.htg/img1.gif"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1</td>
+      <td><img src="metodo8.htg/img2.gif"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1</td>
+      <td><img src="metodo8.htg/img3.gif"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>n</td>
+      <td>1</td>
+      <td><img src="metodo8.htg/img4.gif"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>total:</td>
+      <td>n-1</td>
+      <td><img src="metodo8.htg/img5.gif"></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="metodo8.htg/img6.gif" height="59" width="579"></p>
+
+<p>    El número mínimo de intercambios es cero. Esto ocurre cuando la lista
+esta ordenada. El número máximo será igual al número de comparaciones, cuando
+la lista este justamente al revés. </p>
+
+<p>El número esperado de intercambios</p>
+
+<table border="1" cellspacing="0" cellpadding="0">
+  <tbody align="center" valign="middle">
+    <tr>
+      <td>Número de elemento <br>
+        NEI</td>
+      <td>a situar<br>
+        por elemento</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><img src="metodo8.htg/img7.gif" height="57"
+      width="84" align=middle></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><img src="metodo8.htg/img8.gif" height="57"
+        width="135" align=middle></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><img src="metodo8.htg/img9.gif" height="57"
+        width="152" align=middle></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>n</td>
+      <td><img src="metodo8.htg/img10.gif" height="57"
+        width="49" align=middle></td>
+    </tr>
+    <tr>
+      <td>Total:</td>
+      <td><img src="metodo8.htg/img11.gif" height="59"
+        width="96" align=middle></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>    La complejidad de cálculo es, por tanto, del orden de
+<i>O(n<sup>2</sup>)</i>.   </p>
+ </body>
+</html>

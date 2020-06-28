@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0077)http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/practica1.html -->
+<HTML><HEAD><TITLE>Práctica 1</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="JC y MD" name=Author><LINK href="Práctica 1_archivos/estilos.css" 
+type=text/css rel=stylesheet>
+<META content="JC y MD" name=author>
+<META content="MSHTML 6.00.2800.1276" name=GENERATOR></HEAD>
+<BODY>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=titulo1>Prácticas de Metodología de la Programación II y 
+      Tecnología de la Programación</TD>
+    <TD class=titulo2>Práctica 1: Estructura básica de un programa (Valoración 
+      15%) </TD>
+    <TD>
+      <DIV align=right><A title=GAP 
+      href="http://www.gedlc.ulpgc.es/cgi-bin/gap/mp2.20032004/gap?menu"><IMG 
+      alt=GAP src="Práctica 1_archivos/gap" border=0> 
+</A></DIV></TD></TR></TBODY></TABLE>
+<H2>Prerrequisitos</H2>
+<UL>
+  <LI>Haber estudiado los apartados del 1 al 6 de los apuntes de introducción al 
+  lenguaje de Programación C. </LI></UL>
+<H2>Objetivos</H2>El objetivo de esta práctica es múltiple: 
+<UL>
+  <LI>Familiarizar al alumno con el entorno de desarrollo. 
+  <LI>Que el alumno adquiera experiencia en el uso del lenguaje al desarrollar 
+  un programa simple. 
+  <LI>Que el alumno adquiera destreza en el uso de funciones, paso de parámetros 
+  y uso de vectores. <BR></LI></UL>
+<H2>Ejercicio</H2>Cree un fichero fuente llamado "<B>practica1.c</B>" que 
+contenga lo siguiente:<BR>
+<H3><A name=a></A>A) Función recursiva</H3>Una función llamada "A" de dos 
+parámetros&nbsp; m y n de tipo entero, y que devuelva el resultado (de tipo 
+entero) de la función de Ackermann que se define como:
+<DIV align=center>
+<CENTER>
+<TABLE style="BORDER-COLLAPSE: collapse" borderColor=#111111 cellSpacing=0 
+cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD align=right>A(m,n) =</TD>
+    <TD align=left>--<BR>| 0<BR>| n+1<BR>| A(m&#8722;1, 1)<BR>| A(m&#8722;1, A(m, 
+      n&#8722;1))<BR>--</TD>
+    <TD><BR>&nbsp;si m &lt; 0 o n &lt; 0<BR>&nbsp;si m=0<BR>&nbsp;si m &gt; 0 
+      y n = 0<BR>&nbsp;si m &gt; 0 y n &gt; 
+0<BR>&nbsp;</TD></TR></TBODY></TABLE></CENTER></DIV>A continuación se muestra 
+una tabla con algunos resultados de la función de Ackermann. 
+<BLOCKQUOTE>
+  <TABLE border=1>
+    <TBODY>
+    <TR>
+      <TD><B>m\n</B> </TD>
+      <TD align=right><B>0</B></TD>
+      <TD align=right><B>1</B></TD>
+      <TD align=right><B>2</B></TD>
+      <TD align=right><B>3</B></TD>
+      <TD align=right><B>4</B></TD>
+      <TD align=right><B>5</B></TD>
+      <TD align=right><B>6</B></TD>
+      <TD align=right><B>7</B></TD>
+      <TD align=right><B>8</B></TD>
+      <TD align=right><B>9</B></TD>
+      <TD align=right><B>10</B> </TD></TR>
+    <TR>
+      <TD><B>0</B></TD>
+      <TD align=right>1</TD>
+      <TD align=right>2</TD>
+      <TD align=right>3</TD>
+      <TD align=right>4</TD>
+      <TD align=right>5</TD>
+      <TD align=right>6</TD>
+      <TD align=right>7</TD>
+      <TD align=right>8</TD>
+      <TD align=right>9</TD>
+      <TD align=right>10</TD>
+      <TD align=right>11 </TD></TR>
+    <TR>
+      <TD><B>1</B></TD>
+      <TD align=right>2</TD>
+      <TD align=right>3</TD>
+      <TD align=right>4</TD>
+      <TD align=right>5</TD>
+      <TD align=right>6</TD>
+      <TD align=right>7</TD>
+      <TD align=right>8</TD>
+      <TD align=right>9</TD>
+      <TD align=right>10</TD>
+      <TD align=right>11</TD>
+      <TD align=right>12 </TD></TR>
+    <TR>
+      <TD><B>2</B></TD>
+      <TD align=right>3</TD>
+      <TD align=right>5</TD>
+      <TD align=right>7</TD>
+      <TD align=right>9</TD>
+      <TD align=right>11</TD>
+      <TD align=right>13</TD>
+      <TD align=right>15</TD>
+      <TD align=right>17</TD>
+      <TD align=right>19</TD>
+      <TD align=right>21</TD>
+      <TD align=right>23 </TD></TR>
+    <TR>
+      <TD><B>3</B></TD>
+      <TD align=right>5</TD>
+      <TD align=right>13</TD>
+      <TD align=right>29</TD>
+      <TD align=right>61</TD>
+      <TD align=right>125</TD>
+      <TD align=right>253</TD>
+      <TD align=right>509</TD>
+      <TD align=right>1021</TD>
+      <TD align=right>2045</TD>
+      <TD align=right>4093</TD>
+      <TD align=right>8189 </TD></TR></TBODY></TABLE></BLOCKQUOTE>
+<P></P>
+<P>Nota: No pruebe esta función para valores de m grandes.<BR></P>
+<H3><A name=b></A>B) Parámetros de entrada y salida</H3>Un procedimiento llamado 
+"divisionReal" con cuatro parámetros, los dos primeros de entrada y los otros 
+dos de salida. El procedimiento tiene como objetivo obtener la parte entera y la 
+parte decimal de una división de dos enteros positivos. Los dos parámetros de 
+entrada de tipo entero representan el primero el dividendo y el segundo el 
+divisor . Los dos de salida de tipo real representan el primero la parte entera 
+y el segundo la parte decimal de la división. En caso de que el divisor sea cero 
+se debe devolver un cero como resultado de la parte entera y un 2 como resultado 
+de la parte decimal. <U>No debe usar funciones de la biblioteca de C para 
+implementar este procedimiento</U>.
+<P>Ejemplo:<BR>dividendo: 3<BR>divisor: 
+2<BR>resultado1=1.0<BR>resultado2=0.5<BR>
+<H3><A name=c></A>C) Vectores</H3>
+<P>En un vector de enteros se desea buscar la secuencia contigua más larga de 
+enteros negativos que contenga. Escriba un procedimiento denominado 
+"secuenciaNegativos" de cuatro parámetros. El primer parámetro es el vector 
+donde se busca la secuencia y el segundo es el número de elementos en éste. El 
+tercer parámetro&nbsp;es un vector que contendrá la mayor secuencia encontrada 
+de enteros negativos, en el mismo orden en que aparecen en el vector original, y 
+el cuarto parámetro el número de datos almacenados en el vector del tercer 
+parámetro. Tenga en cuenta que el tercer y cuarto parámetro son de entrada y 
+salida.&nbsp; <U>No debe usar funciones de la biblioteca de C para implementar 
+este procedimiento</U>.</P>
+<P>Ejemplo:<BR>Vector de entrada: [1, 2, -3, 0, -1, 8, -4, -4, -1, 0]<BR>Tamaño 
+del vector: 10<BR>Vector de salida: [-4, -4, -1, ...]<BR>Tamaño del vector: 3
+<H3>D) Programa principal</H3>
+<P>La función <B>main</B> tiene el objetivo de probar el correcto funcionamiento 
+de la función y procedimientos solicitados. Estas pruebas deben considerar el 
+mayor número posible de casos. Antes de probar cada caso debe elegir los datos 
+de entrada y saber el resultado que se debe obtener, para así contrastar el 
+resultado que obtenga al ejecutar la prueba correspondiente. Ejecute cada&nbsp; 
+prueba y compruebe su resultado.</P>
+<H2>No olvide que<BR></H2>
+<OL>
+  <LI>Es posible <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/EstructurasControl.html#Inicializacion de variables" 
+  target=apuntesc>inicializar las variables en el momento</A> de su definición. 
+  <LI>Los datos se leen con «<B><A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/Funciones.html#scanf" 
+  target=libc>scanf</A></B>». 
+  <LI>Las variables se muestran con «<B><A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/Funciones.html#printf" 
+  target=libc>printf</A></B>». 
+  <LI>Para hacer uso de «<B><A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/Funciones.html#printf" 
+  target=libc>printf</A></B> » y «<B><A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/Funciones.html#scanf">scanf</A></B>» 
+  es necesario incluir el fichero cabecera <TT><A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/BibliotecaFunciones.html#stdio.h" 
+  target=libc>stdio.h</A></TT>. 
+  <LI>Es posible que sea necesario usar el <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/TiposBasicos.html#cast" 
+  target=apuntesc>operador cast</A>. </LI></OL>
+<H2>Nota importante</H2>
+<TABLE cellSpacing=2 cellPadding=2 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TD vAlign=top>Se deben respetar los nombres de ficheros, funciones y 
+      procedimientos, así como el tipo, posición y número de parámetros de las 
+      funciones y procedimientos solicitados en el enunciado. El incumplimiento 
+      de este requisito puede invalidar la 
+práctica.</TD></TR></TBODY></TABLE>&nbsp;</BODY></HTML>

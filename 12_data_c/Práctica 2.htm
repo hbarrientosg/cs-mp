@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0077)http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/practica2.html -->
+<HTML><HEAD><TITLE>Práctica 2</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="JC y MD" name=Author><LINK href="Práctica 2_archivos/estilos.css" 
+type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2800.1276" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=titulo1>Prácticas de Metodología de la Programación II y 
+      Tecnología de la Programación</TD>
+    <TD class=titulo2>Práctica 2: Tipos de datos no homogéneos. (Valoración 
+      20%)</TD>
+    <TD>
+      <DIV align=right><A title=GAP 
+      href="http://www.gedlc.ulpgc.es/cgi-bin/gap/mp2.20032004/gap?menu"><IMG 
+      alt=GAP src="Práctica 2_archivos/gap" 
+border=0></A></DIV></TD></TR></TBODY></TABLE>
+<H2>Objetivos</H2>
+<P>Que el alumno adquiera destreza en el uso de estructuras de datos complejas, 
+memoria dinámica y en el uso de programas compuestos por varios ficheros 
+fuente.</P>
+<H2>Requisitos</H2>
+<UL>
+  <LI>Conocer el manejo de estructuras de datos complejas. Lea en los apuntes 
+  los apartados de <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/TiposConstruidos.html#Punteros">punteros</A>, 
+  <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/TiposConstruidos.html#Tipos struct y union">tipos 
+  struct</A> y <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/TiposConstruidos.html#malloc y free">memoria 
+  dinámica</A>. 
+  <LI>Conocer la compilación de programas complejos. Lea el siguiente apartado y 
+  en los apuntes los relativos a el <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/Preprocesador.html">preprocesador</A>, 
+  <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/EstructuraPrograma.html#Modulo">los 
+  módulos</A> y <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/EstructuraPrograma.html#Obtencion ejecutable">obtención 
+  de un ejecutable</A>. </LI></UL>
+<H2>Creación de programas en C compuestos de varios ficheros fuente</H2>
+<P>La escritura de programas más o menos grandes en C usando un único fichero 
+plantea varios problemas entre los que destacan los siguientes: el fichero se 
+hace difícil de manejar a nivel de edición, no existe una organización sobre las 
+funciones y cualquier modificación del código requiere una completa 
+recompilación. La solución está en descomponer los programas en varios ficheros 
+que serán recompilados según sea necesario. Cada fichero debe reunir elementos 
+relacionados y suministrar, exceptuando el que contiene la función <B>main</B>, 
+un fichero cabecera que establezca la interfaz del mismo.</P>
+<P>Los compiladores de C permiten la compilación separada de cada uno de los 
+ficheros que componen un programa. El enlazador se encarga de unir las piezas 
+resultantes de la compilación y generar el ejecutable. El enlazador con 
+frecuencia es invocado automáticamente por el compilador o está integrado en 
+éste. Cuando el número de ficheros crece, la tarea de saber qué partes del 
+código requiere ser recompilada se hace más compleja. Por ello, en la mayoría de 
+los casos se automatiza este proceso. Esto lo puede realizar el entorno de 
+desarrollo, IDE, por medio de un proyecto en el que el programador establece los 
+ficheros ".c" que componen el programa o mediante la utilidad <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/usomake/makeypcgrasp.html#make">make</A> 
+que por medio de un lenguaje de descripción de dependencias es capaz de resolver 
+qué ficheros es necesario recompilar.</P>
+<P></P>
+<H2>Ejercicio</H2>
+<P>Se desea implementar un cola de enteros mediante una lista de nodos 
+doblemente enlazada. La cola debe facilitar operaciones para insertar un 
+elemento, extraer un elemento, inicializar una cola, destruir una cola y copiar 
+una cola en otra distinta. <BR>Además, la cola debe proporcionar un mecanismo de 
+iteración que permita examinar cualquier elemento mediante un iterador interno 
+que se podrá mover secuencialmente desde el principio o el final de la cola. 
+</P>
+<P>Un iterador es un mecanismo que permite referenciar los elementos de un 
+contenedor, en general se implementa como un puntero. En el caso que nos ocupa, 
+el iterador debe estar asociado a un elemento y no a una posición; si el 
+elemento que referencia se desplaza, el iterador debe seguir señalándolo. Si el 
+elemento referenciado por el iterador se extrae, éste debe señalar al 
+siguiente.</P>
+<P>La interfaz de las operaciones de la cola debe atenerse a lo establecido en 
+la tabla de <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/practica2.html#interfaz">operaciones 
+a implementar</A>.</P>Use para los nodos de la lista y para la cola las 
+siguientes estructuras: <PRE class=algoritmo><STRONG>struct</STRONG> NodoCola {
+    <SPAN class=comentario>/* Escriba los campos necesarios en los nodos de la lista
+    de enteros doblemente enlazada */</SPAN>
+};
+<STRONG>typedef struct</STRONG> NodoCola TNodoCola, *PNodoCola;
+<STRONG>struct</STRONG> Cola {
+    <SPAN class=comentario>/* Escriba los campos necesarios para mantener la lista
+    de nodos y realizar las operaciones que se piden sobre la cola */</SPAN>
+};
+<STRONG>typedef struct</STRONG> Cola TCola, *PCola;
+</PRE>
+<P>Almacene la implementación de las operaciones sobre la cola en un fichero 
+llamado "cola.c" y su interfaz en uno llamado "cola.h". Llame al fichero que 
+contenga la función main "practica2.c".</P>
+<P>Para usar las funciones <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/libc-202/libc_479.html">malloc</A>, 
+<A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/libc-202/libc_308.html">free</A> 
+y la macro NULL se debe incluir el fichero <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/libc-202/libc_26.html">stdlib.h</A>.</P>
+<H3><A name=interfaz></A>Operaciones a implementar</H3>
+<TABLE border=1>
+  <TBODY>
+  <TR class=encabezadotabla>
+    <TD noWrap>Declaración prototipo</TD>
+    <TD>Descripción</TD></TR>
+  <TR>
+    <TD noWrap>void inicializa(PCola cola)</TD>
+    <TD>Inicializa una cola vacía. Prepara la cola para que pueda ser 
+      utilizada, haciendo la función de constructor. Las operaciones siguientes 
+      no se pueden realizar si no se ha llamado a inicializa sobre la cola. 
+      Inicializa no se puede llamar sobre una cola ya inicializada.
+      <P>No es necesario comprobar si ya se ha llamado a inicializa ni en ésta, 
+      ni en las siguientes operaciones.</P></TD></TR>
+  <TR>
+    <TD noWrap>int inserta(PCola cola,int t)</TD>
+    <TD>Se inserta en el final de la cola un entero t. La función devuelve 1 
+      si se ha realizado la inserción y 0 en caso contrario. Si el elemento 
+      insertado es el primero, el iterador pasa a señalarlo. Para crear un nodo 
+      en memoria dinámica emplee la función <A 
+      href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/libc-202/libc_479.html">malloc</A>.</TD></TR>
+  <TR>
+    <TD noWrap>int extrae(PCola cola)</TD>
+    <TD>Se extrae el elemento del principio de la cola. La función devuelve 1 
+      si se ha realizado la extracción y 0 en caso de que no haya elementos a 
+      extraer. Si el iterador señala al elemento que se extrae pasa a señalar al 
+      siguiente, si existe. Para destruir un nodo de memoria dinámica emplee la 
+      función <A 
+      href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/libc-202/libc_308.html">free</A>.</TD></TR>
+  <TR>
+    <TD noWrap>int tamano(PCola cola)</TD>
+    <TD>Devuelve el número de datos en la cola.</TD></TR>
+  <TR>
+    <TD noWrap>void copia(PCola destino, PCola origen)</TD>
+    <TD>Se copia los datos de la cola origen en la cola destino de forma que 
+      al final las dos colas contengan los mismos datos en el mismo orden. El 
+      iterador debe mantener la posición relativa en la cola destino con 
+      respecto a la origen.</TD></TR>
+  <TR>
+    <TD noWrap>void destruye(PCola cola)</TD>
+    <TD>Se vacía la cola liberando todos los nodos que la componen. Hace la 
+      función de destructor, no debiendo ser utilizada la variable después de 
+      llamarse. Para liberar un nodo de memoria dinámica emplee la función <A 
+      href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/libc-202/libc_308.html">free</A>.
+      <P>No es necesario comprobar si ya se ha llamado a destruye ni en ésta, ni 
+      en otras operaciones.</P></TD></TR>
+  <TR>
+    <TD noWrap>int examina(PCola cola)</TD>
+    <TD>Se devuelve el entero del elemento al que señala el iterador. En caso 
+      de que la cola esté vacía se devuelve 0.</TD></TR>
+  <TR>
+    <TD noWrap>int inicio(PCola cola)</TD>
+    <TD>Se sitúa el iterador en el&nbsp; primer elemento de la cola. La 
+      función devuelve 1 si se ha realizado la operación y 0 si la cola está 
+      vacía.</TD></TR>
+  <TR>
+    <TD noWrap>int fin(PCola cola)</TD>
+    <TD>Se sitúa el iterador en el último elemento de la cola. La función 
+      devuelve 1 si se ha realizado la operación y 0 si la cola está 
+vacía.</TD></TR>
+  <TR>
+    <TD noWrap>int avanza(PCola cola)</TD>
+    <TD>Se avanza el iterador al siguiente elemento de la cola. El sentido de 
+      avance es desde el inicio de la cola hacia el fin, el último elemento 
+      añadido. La función devuelve 1 si se ha realizado la operación y 0 en caso 
+      contrario.</TD></TR>
+  <TR>
+    <TD noWrap>int retrocede(PCola cola)</TD>
+    <TD>Se retrocede el iterador&nbsp; al anterior elemento de la cola.&nbsp; 
+      El sentido del retroceso es desde el fin de la cola hacia el principio, el 
+      primer elemento que saldrá. La función devuelve 1 si se ha realizado la 
+      operación y 0 en caso contrario.</TD></TR></TBODY></TABLE>
+<H3>Pruebas a realizar</H3>
+<P>Escriba una función main en el fichero <B>practica2.c</B> que realice las 
+pruebas oportunas para comprobar el correcto funcionamiento de las funciones y 
+procedimientos suministradas por el módulo "cola".</P>
+<P>A continuación se muestra un ejemplo de uso de colas apareciendo en los 
+comentarios el efecto de cada operación.</P><PRE class=algoritmo><B>#include</B> "cola.h"
+<B>int</B> main()
+{
+    <B>int</B> i, nv, v[10];
+    TCola cola, copiacola;
+    inicializa(&amp;cola);     <SPAN class=comentario>   /* cola=[] */</SPAN>
+    inserta(&amp;cola,0);     <SPAN class=comentario>   /* cola=[(<B>0</B>)] los paréntesis representan el iterador*/</SPAN>
+    <B>for</B>(i=1; i&lt; 10; i++)
+       inserta(&amp;cola,i);
+    /* cola=[(<B>0</B>), 1, 2, 3, 4, 5, 6, 7, 8, 9] */
+    extrae(&amp;cola);        <SPAN class=comentario>   /* cola=[(<B>1</B>), 2, 3, 4, 5, 6, 7, 8, 9] */</SPAN>
+    avanza(&amp;cola);        <SPAN class=comentario>   /* cola=[1, (<B>2</B>), 3, 4, 5, 6, 7, 8, 9] */</SPAN>
+    extrae(&amp;cola);        <SPAN class=comentario>   /* cola=[(<B>2</B>), 3, 4, 5, 6, 7, 8, 9] */</SPAN>
+    fin(&amp;cola);           <SPAN class=comentario>   /* cola=[2, 3, 4, 5, 6, 7, 8, (<B>9</B>)] */</SPAN>
+    retrocede(&amp;cola);       <SPAN class=comentario> /* cola=[2, 3, 4, 5, 6, 7, (<B>8</B>), 9] */</SPAN>
+    <B>if</B>(tamano(&amp;cola)&gt;0)
+      <B>for</B>(i=0, nv=0; i&lt;10; i++) {
+        v[nv++]=examina(&amp;cola);
+        <B>if</B>(!retrocede(&amp;cola)) <B>break</B>;
+      }
+    <SPAN class=comentario>/* v={8, 7, 6, 5, 4, 3, 2, ...}, nv=7 */</SPAN>
+    <SPAN class=comentario>/* cola=[(<B>2</B>), 3, 4, 5, 6, 7, 8, 9] */</SPAN>
+    avanza(&amp;cola);           <SPAN class=comentario>/* cola=[2, (<B>3</B>), 4, 5, 6, 7, 8, 9] */</SPAN>
+    inicializa(&amp;copiacola); <SPAN class=comentario> /* copiacola=[] */</SPAN>
+    copia(&amp;copiacola,&amp;cola); <SPAN class=comentario>/* copiacola=[2, (<B>3</B>), 4, 5, 6, 7, 8, 9] */</SPAN>
+    <B>for</B>(i=0; i&lt; 3; i++)
+       extrae(&amp;copiacola);
+    <SPAN class=comentario>/* copiacola=[(<B>5</B>), 6, 7, 8, 9] */</SPAN>
+    copia(&amp;cola,&amp;copiacola); <SPAN class=comentario>/* cola=[(<B>5</B>), 6, 7, 8, 9] */</SPAN>
+    destruye(&amp;cola);         <SPAN class=comentario>/* cola=[] */</SPAN>
+    destruye(&amp;copiacola);    <SPAN class=comentario>/* copiacola=[] */</SPAN>
+    <B>return</B> 0;
+}</PRE>
+<TABLE id=AutoNumber1 style="BORDER-COLLAPSE: collapse" borderColor=#111111 
+cellSpacing=0 cellPadding=0 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TD width="100%">Nota: El código anterior <U>no es una prueba</U>, se 
+      suministra para ilustrar la semántica de las operaciones 
+  solicitadas.</TD></TR></TBODY></TABLE>
+<H3>Ficheros a entregar</H3>
+<P>El alumno debe entregar los ficheros "cola.c", "cola.h" y 
+"practica2.c".</P></BODY></HTML>

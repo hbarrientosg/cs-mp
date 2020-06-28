@@ -1,0 +1,63 @@
+SOURCE: ..\..\prac02d.ada
+  SRCTIME: 1050266858    Sun Apr 13 19:47:38 2003
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+SRCDEP: src\text_io.spc
+  SRCDEPTIME: 886754250    Fri Feb 06 07:37:30 1998
+SRCDEP: src\ada.ada
+  SRCDEPTIME: 918049390    Wed Feb 03 12:43:10 1999
+SRCDEP: src\io_exceptions.dat
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\SYSTEM.SPC
+  SRCDEPTIME: 848407450    Tue Nov 19 11:44:10 1996
+SRCDEP: src\unchecked_conversion.ada
+  SRCDEPTIME: 857457980    Tue Mar 04 05:46:20 1997
+SRCDEP: src\rts.spc
+  SRCDEPTIME: 918049420    Wed Feb 03 12:43:40 1999
+SRCDEP: src\sys_config.ads
+  SRCDEPTIME: 902827280    Tue Aug 11 08:21:20 1998
+SRCDEP: ..\..\dim.ads
+  SRCDEPTIME: 1050507658    Wed Apr 16 14:40:58 2003
+SRCDEP: ..\..\dim.adb
+  SRCDEPTIME: 1050507660    Wed Apr 16 14:41:00 2003
+SRCDEP: src\unchecked_deallocation.ada
+  SRCDEPTIME: 857457980    Tue Mar 04 05:46:20 1997
+SRCDEP: src\text_io.bdy
+  SRCDEPTIME: 942838850    Wed Nov 17 10:40:50 1999
+SRCDEP: src\lexer.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\tgt.spc
+  SRCDEPTIME: 918049430    Wed Feb 03 12:43:50 1999
+SRCDEP: src\tgt_char_io.spc
+  SRCDEPTIME: 872066160    Wed Aug 20 07:36:00 1997
+SRCDEP: src\tgt_basic_io.spc
+  SRCDEPTIME: 848407440    Tue Nov 19 11:44:00 1996
+SRCDEP: src\string_utilities.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\tgt_io_constants.dat
+  SRCDEPTIME: 848407450    Tue Nov 19 11:44:10 1996
+SRCDEP: src\float_io_support.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\integer_state_tables.dat
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\integer_image_and_value_pkg.spc
+  SRCDEPTIME: 918049410    Wed Feb 03 12:43:30 1999
+SRCDEP: src\streams.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+UNIT: Prueba_Colas
+  UKIND: 2    SUBP_BODY
+  DEP: Colas_dinámicas
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\dim.ads
+    DEPSRCTIME: 1050507658    Wed Apr 16 14:40:58 2003
+  DEP: Text_IO
+    DEPKIND: 11    PKG_RENAME
+    DEPSRC: src\text_io.spc
+    DEPSRCTIME: 886754250    Fri Feb 06 07:37:30 1998
+  NEED: system.rts.TGT.Sec_Stack_Pkg
+    NEEDKIND: 7    PKG_DECL
+  NEED: system.rts.Heap_Storage_Pkg
+    NEEDKIND: 7    PKG_DECL
+  FEATURES: 16#8400400102600#(-1,-1,-1,-1,-1,-1)
+  MAINLINKNAME: prueba_colas
+ENDUNIT

@@ -1,0 +1,9 @@
+SOURCE: ..\..\arbolbin.ads
+  SRCTIME: 1054224898    Thu May 29 15:14:58 2003
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+UNIT: Arbol_Bin
+  UKIND: 9    PKG_GENERIC
+  NEED: Arbol_Bin
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT

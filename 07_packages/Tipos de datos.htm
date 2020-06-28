@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0057)http://www.gedlc.ulpgc.es/docencia/NGA/tipos_general.html -->
+<HTML><HEAD><TITLE>Tipos de datos.</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><LINK 
+href="Tipos de datos_archivos/estilos.css" type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY>Anterior | Superior | Siguiente 
+<H1>Guía de referencia básica de Ada 95</H1>
+<H1 class=titulo2>Tipos de datos.</H1>
+<P></P>
+<H2><A name=tipo_subtipo></A>Tipos y subtipos.<BR></H2>Un tipo de datos define 
+un conjunto de valores y operaciones primitivas aplicables a los mismos. El 
+lenguaje proporciona tipos predefinidos junto con mecanismos para que el usuario 
+pueda definir nuevos tipos y subtipos. Los tipos se agrupan en clases formando 
+una <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_general.html#jerarquia">jerarquía</A>.<BR>
+<P>La declaración de un tipo requiere la especificación de un nombre y la 
+definición (descripción) del mismo; la forma general de una declaración de tipo 
+es: <B>type </B><I>Nombre_Tipo </I><B>is </B><I>Definición_tipo</I>;. La forma 
+de la definición depende de la clase de tipo que se esté definiendo. Un tipo se 
+dice que es derivado si en su definición se utiliza la palabra <B>new </B>en 
+referencia a otro tipo (como los tipos Entero y Entero_Corto del siguiente 
+ejemplo); un tipo derivado obtiene las características del que deriva (su "tipo 
+padre"). <BR></P>
+<P class=algoritmo><B>type </B>Octeto <B>is range</B> 0..255;<BR><B>type 
+</B>Entero <B>is new</B> Integer;<BR><B>type </B>Entero_Corto <B>is new</B> 
+Entero <B>range </B>0..1000;<BR><B>type </B>Vector <B>is array</B>(1..20) <B>of 
+</B>Float;<BR></P>
+<P>A veces (<A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/punteros.html#estructuras">Ej. 
+cuando se crean estructuras de datos dinámicas</A>) es conveniente hacer una 
+declaración incompleta de tipo que permita disponer de un nombre de tipo que en 
+realidad se definirá con posterioridad en la misma región del programa. <BR></P>
+<P class=algoritmo><B>type </B>Un_Tipo; --sólo se declara un nombre<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --la definición del tipo 
+requiere<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --una nueva 
+declaración<BR></P>
+<P class=Truco>Una declaración de tipo define los valores del tipo y un conjunto 
+de operaciones predefinidas en función de su clase; el usuario puede adjuntar su 
+propia definición de operaciones primitivas adicionales para el tipo que está 
+definiendo (simplemente tiene que adjuntar <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/subprogramas.html">subprogramas</A> 
+que tengan entre sus parámetros objetos del tipo).<BR></P>
+<P>Un subtipo define un subconjunto restringido de valores de un tipo base con 
+atributos específicos. Se declara utilizando la palabra <B>subtype </B>en vez de 
+<B>type</B></P>
+<P class=algoritmo><B>subtype </B>Byte <B>is </B>Integer <B>range 
+</B>0..255;</P>
+<H2><A name=compat_conver></A>Compatibilidad y conversión de tipos.</H2>
+<P>Ada es un lenguaje fuertemente tipado: en general no se pueden mezclar 
+valores de tipos diferentes aún cuando pudieran parecer equivalentes (ni 
+siquiera de un tipo derivado y su tipo padre). Esta regla no incluye a los 
+subtipos: los valores de un subtipo <U>son</U> valores del tipo base.<BR></P>
+<P>Se pueden realizar conversiones explícitas entre tipos estrechamente 
+relacionados tal como se establece en la sección 4.6 del "Ada 95 Reference 
+Manual"; para ello se utiliza el tipo destino como si fuera el nombre de una 
+función con un parámetro que es una expresión del tipo origen de la 
+conversión.</P>
+<P class=algoritmo>X: Float;<BR>Y: Integer := 5;<BR>...<BR>X := Float(Y); --se 
+asigna a X el valor real 5.0<BR></P>
+<P class=Truco>Una conversión de tipo cuyo parámetro es una variable <B>no 
+cambia el tipo de la variable</B>, lo que hace es devolver el valor que en el 
+tipo destino corresponde al valor del tipo origen asociado a la variable según 
+las reglas de conversión.<BR></P>
+<P>Los <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_escalares.html">tipos 
+escalares</A> ofrecen <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_escalares.html#Atrib_escalares">atributos 
+(image, value)</A> para obtener la representación de un valor como ristra de 
+caracteres (string) y viceversa.<BR></P>
+<P>Otros tipos (Ej. ristras de tamaño limitado y ristras de tamaño libre) 
+ofrecen, entre sus operaciones primitivas, funciones de conversión a tipos 
+relacionados.<BR></P>
+<H2><A name=limitados></A>Tipos limitados.</H2>Cualquier tipo <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_estructurados.html#hetero">heterogéneo</A> 
+o <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_general.html#privados">privado</A> 
+puede declararse limitado usando la palabra <B>limited</B>. Un <I>tipo 
+limitado</I> es uno para el que no está definida la <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/sentencias_simples.html#asignacion">asignación</A> 
+ni los <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/expresiones.html#relacionales">operadores 
+relacionales de igualdad</A>.<BR>
+<P class=algoritmo><B>type </B>T1 <B>is </B><B>limited record</B><BR>&nbsp; 
+&nbsp;...<BR><B>end record</B>;<BR><B>type </B>T2 <B>is limited 
+</B><B>private</B>;<BR></P>
+<H2><A name=privados></A>Tipos privados.</H2>Una declaración de <I>tipo 
+privado</I> es una en la que como descripción se utiliza la palabra 
+<B>private</B>. La declaración proporciona una vista restringida de un tipo que 
+está definido en otro sitio.<BR>
+<P class=algoritmo><B>type </B>T_Privado <B>is </B><B>private</B>;<BR></P>
+<P>En el ámbito de su declaración un tipo privado sólo admite <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/sentencias_simples.html#asignacion">asignación</A> 
+y <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/expresiones.html#relacionales">operadores 
+relacionales de igualdad</A> (a menos que además sea <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_general.html#limitados">limitado</A>).<BR></P>
+<P>Una declaración de tipo privado se puede hacer en la sección pública de la <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html#especificacion">especificación 
+</A><A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html#especificacion">de un 
+paquete</A>, tal tipo debe redeclararse en la sección privada (private) de dicha 
+especificación, donde se definirán sus características "ocultas" que sólo podrán 
+usarse dentro del paquete.<BR></P>
+<P>También puede declararse privado un <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/unidades.html#par_formales">parámetro 
+formal genérico</A> en cuyo caso dentro de la <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/unidades.html#genericas">unidad 
+genérica</A> sólo se le podrán aplicar las operaciones antes mencionadas, 
+independientemente del tipo que actúe como parámetro real.<BR></P>
+<P></P>
+<H2 class=NivelMedio><A name=jerarquia></A>Jerarquía de clases de tipos.</H2>
+<P>La jerarquía de clases de tipos de Ada 95, tal como se recoge en la seción 
+3.2 del "Ada 95 Reference Manual", es:<BR></P>
+<P>all types<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+elementary<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+scalar<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; discrete<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+enumeration<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+character<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+boolean<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; other 
+enumeration<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; integer<BR>&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; signed integer<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+modular integer<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; real<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; floating 
+point<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; fixed point<BR>&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; ordinary fixed point<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+decimal fixed point<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+access<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; access-to-object<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; access-to-subprogram<BR>&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; composite<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; array<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; string<BR>&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; other 
+array<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; untagged 
+record<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+tagged<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+task<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+protected<BR></P>
+<P></P>
+<P></P>
+<P></P>
+<P class=pie>© Grupo de Estructuras de Datos y Lingüística Computacional - 
+ULPGC.<BR></P>
+<P>Anterior | Superior | Siguiente<BR></P><BR><BR><BR></BODY></HTML>

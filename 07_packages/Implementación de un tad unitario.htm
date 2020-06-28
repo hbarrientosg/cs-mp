@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0087)http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/practica1.html -->
+<HTML><HEAD><TITLE>Implementación de un tad unitario.</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="Zenón Hernández Figueroa" name=Author>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR><LINK class="titulo 2" 
+href="Implementación de un tad unitario_archivos/estilos.css" type=text/css 
+rel=stylesheet><LINK 
+href="Implementación de un tad unitario_archivos/estilos.css" type=text/css 
+rel=stylesheet></HEAD>
+<BODY>
+<H1>Prácticas de Estructuras de Datos I</H1>
+<H1 class=titulo2>Implementación de un tad unitario</H1>
+<H2>General</H2>Se propone un ejercicio de implementación de un tad unitario, 
+los números racionales. Primeramente, se presenta la definición abstracta del 
+tad número racional, expresada en lenguaje natural. A continuación, se 
+especifica una interfaz en base a la cual hay que llevar a cabo la 
+implementación del tad. Para probar la implementación, se ofrece un programa que 
+se encuentra en el fichero <A 
+href="http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/programas/prac01.ada">prac01.ada</A>. 
+El contenido de este fichero <B>no debe modificarse bajo ningún concepto</B>. 
+Tenga en cuenta que, como resultado de la práctica, deberá entregar sólo los 
+ficheros <I>prac01.ads</I> y <I>prac01.adb</I>, que se probarán integrándolos en 
+un programa. Si su implementación no funciona sin modificar el programa de 
+pruebas que se le da, no funcionará con el programa de pruebas que utilice el 
+corrector. <BR>Los conocimientos específicos de Ada necesarios para realizar 
+esta práctica son los relacionados con la <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/unidades.html">estructura general 
+de un programa en Ada</A>, los <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html">paquetes</A> y los 
+<A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/tipos_general.html#privados">tipos 
+privados</A>. 
+<H2>Marco teórico.</H2>Sea <B><FONT size=+1>Z</FONT></B> el conjunto de los 
+números enteros y <B><FONT size=+1>Z<SUP>*</SUP></FONT></B> el conjunto de los 
+números enteros excluido el cero. Se denomina <B>fracción </B>a cualquier par 
+ordenado (a,b) del conjunto <B><FONT size=+1>Z</FONT></B>x<B><FONT size=+1> 
+Z<SUP>*</SUP></FONT></B>, que representaremos como a/b. El primer componente del 
+par se conoce como <B>numerador</B> y el segundo como <B>denominador</B>. 
+(Nótese que, al tomar el denominador de <B><FONT size=+1>Z<SUP> 
+*</SUP></FONT></B>, éste nunca puede ser cero). <BR><B>Número racional</B> es 
+toda clase de equivalencia creada por la relación <B>(a/b) R (c/d) <U>si y sólo 
+si</U> a*d = b*c</B> en el conjunto<B><FONT size=+1> Z</FONT></B>x<B><FONT 
+size=+1>Z<SUP>*</SUP></FONT></B>. La relación <B>R</B> es reflexiva, simétrica y 
+transitiva. A todo racional le corresponde una <B>fracción canónica</B>, esto 
+es, cuyos componentes son primos entre sí y el denominador es positivo: 
+<BLOCKQUOTE>48/30 = 24/15 = <B>8/5</B> <BR>12/(-10) = -12/10 = 
+<B>-6/5</B></BLOCKQUOTE>Se define la <B>suma </B>de racionales como: (a/b) + 
+(c/d) = (a*d+b*c)/(b*d) <BR>Se define la <B>resta </B>de racionales como: (a/b) 
+- (c/d) = (a*d-b*c)/(b*d) <BR>Se define la <B>multiplicación </B>de racionales 
+como: (a/b) * (c/d) = (a*c)/(b*d) <BR>Se define la <B>división </B>de racionales 
+como: (a/b) / (c/d) = (a*d)/(b*c) 
+<H2>Ejercicio a realizar.</H2>Desarrolle un paquete llamado 
+<I>Números_Racionales</I> que ofrezca la siguiente interfaz: 
+<H3>Tipos públicos.</H3>
+<BLOCKQUOTE>Un tipo llamado <I>Racional</I>, capaz de representar 
+fracciones.</BLOCKQUOTE>
+<H3>Operaciones generadoras básicas.</H3>
+<BLOCKQUOTE><B>Sobrecarga </B>del operador "/". <BR><U>entradas</U>: dos 
+  parámetros de tipo <I>Integer</I>. <BR><U>resultado</U>: de tipo 
+  <I>Racional</I>, la fracción resultante de tomar como numerador el primer 
+  parámetro y como denominador el segundo. <BR><U>excepciones</U>: se lanzará 
+  una excepción llamada <I>Denominador_Cero</I> cuando el denominador sea 
+cero.</BLOCKQUOTE>
+<H3>Operaciones aritméticas.</H3>
+<BLOCKQUOTE><B>Sobrecarga </B>del operador "+". <BR><U>entradas</U>: dos 
+  parámetros de tipo <I>Racional</I>. <BR><U>resultado</U>: de tipo 
+  <I>Racional</I>, la <B><I>fracción canónica</I></B> representativa del 
+  racional resultante de sumar los dos parámetros. 
+  <P><B>Sobrecarga </B>del operador "-". <BR><U>entradas</U>: dos parámetros de 
+  tipo <I>Racional</I>. <BR><U>resultado</U>: de tipo <I>Racional</I>, la 
+  <B><I>fracción canónica</I></B> representativa del racional resultante de 
+  restar el segundo parámetro del primero. </P>
+  <P><B>Sobrecarga </B>del operador "*". <BR><U>entradas</U>: dos parámetros de 
+  tipo <I>Racional</I>. <BR><U>resultado</U>: de tipo <I>Racional</I>, la 
+  <B><I>fracción canónica</I></B> representativa del racional resultante de 
+  multiplicar los dos parámetros. </P>
+  <P><B>Sobrecarga </B>del operador "/". <BR><U>entradas</U>: dos parámetros de 
+  tipo <I>Racional</I>. <BR><U>resultado</U>: de tipo <I>Racional</I>, 
+  <I>la</I><B><I> fracción canónica</I></B> representativa del racional 
+  resultante de dividir el primer parámetro entre el segundo. 
+  <BR><U>excepciones</U>: se lanzará una excepción denominada 
+  <I>Denominador_Cero</I> cuando el divisor sea cero.</P></BLOCKQUOTE>
+<H3>Operaciones accesoras.</H3>
+<BLOCKQUOTE><B>Sobrecarga </B>del operador "=". <BR><U>entradas</U>: dos 
+  parámetros de tipo <I>Racional</I>. <BR><U>resultado</U>: de tipo 
+  <I>Boolean</I>, <I>True</I> si los dos parámetros representan el mismo 
+  racional (según la relación de equivalencia) y <I>False,</I> en caso 
+  contrario. 
+  <P><B>Función </B>Numerador. <BR><U>entradas</U>: un parámetro de tipo 
+  <I>Racional</I>. <BR><U>resultado</U>: de tipo <I>Integer</I>, el numerador de 
+  la fracción. </P>
+  <P><B>Función </B>Denominador. <BR><U>entradas</U>: un parámetro de tipo 
+  <I>Racional</I>. <BR><U>resultado</U>: de tipo <I>Integer</I>, el denominador 
+  de la fracción.</P></BLOCKQUOTE>
+<H3>Excepciones.</H3>
+<BLOCKQUOTE>Se declarará en la interfaz la <B>excepción</B> 
+  <I>Denominador_Cero</I>.</BLOCKQUOTE>
+<H2>A tener en cuenta.</H2>Para obtener los resultados en forma canónica, es 
+necesario calcular el Máximo Común Divisor (MCD) de los dos componentes de la 
+fracción, a fin de dividirlos a ambos. Este cálculo debe hacerse implementando, 
+de forma adecuada, el siguiente método: 
+<P>Dados dos números enteros mayores que cero, A y B, se divide el mayor por el 
+menor. Si el resto es distinto de cero, se repite el proceso con el par formado 
+por el menor y el resto. Cuando el resto sea cero, el MCD es el número que se 
+acaba de usar como divisor. <BR><B>Ejemplo:</B> MCD(48,132): 132 / 48 = 2, Resto 
+= 36; 48 / 36 = 1, Resto = 12; 36 / 12 = 3, Resto = 0 =&gt; MCD(48,132) = 12. 
+</P></BODY></HTML>

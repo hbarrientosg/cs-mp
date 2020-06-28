@@ -1,0 +1,15 @@
+SOURCE: ..\..\dim.adb
+  SRCTIME: 1050507660    Wed Apr 16 14:41:00 2003
+  UNIT: Colas_dinámicas
+    UKIND: 8    PKG_BODY
+ENDSOURCE
+SOURCE: ..\..\dim.ads
+  SRCTIME: 1050507658    Wed Apr 16 14:40:58 2003
+  UNIT: Colas_dinámicas
+    UKIND: 9    PKG_GENERIC
+ENDSOURCE
+SOURCE: ..\..\prac02d.ada
+  SRCTIME: 1050266858    Sun Apr 13 19:47:38 2003
+  UNIT: Prueba_Colas
+    UKIND: 2    SUBP_BODY
+ENDSOURCE

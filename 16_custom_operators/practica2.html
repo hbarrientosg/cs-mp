@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Práctica 2: Operador de asignación y constructor de copia</title>
+  
+  <link href="practica2_files/estilos.css" rel="stylesheet" type="text/css"></head>
+
+<body>
+
+<table border="0" cellspacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td class="titulo1">Prácticas de Estructuras de Datos II</td>
+      <td class="titulo2">Práctica 2: Operador de asignación y constructor de
+        copia.<br>
+      (Valoración 20%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Objetivos:</h2>
+El objetivo de la práctica es que el alumno
+practique el uso del <a href="https://www.gedlc.ulpgc.es/docencia/ed_ii/privado0405/documentacion/poo/clases.html#4">operador
+de asignación</a> y el <a href="https://www.gedlc.ulpgc.es/docencia/ed_ii/privado0405/documentacion/poo/clases.html#5">constructor
+de copia</a> en C++ y la construcción de clases complejas.
+
+<h2>Ejercicio:</h2>
+
+<p>Cree una clase <b>Polinomio</b> que emule los polinomios con coeficientes
+<b>reales</b>. <br>
+(a<sub>n</sub>x<sup>n</sup>+ a<sub>n-1</sub>x<sup>n-1</sup>+
+...+a<sub>2</sub>x<sup>2</sup>+ a<sub>1</sub>x<sup>1</sup>+
+a<sub>0</sub>x<sup>0</sup>)</p>
+
+<p>Esta clase debe tener implementadas las siguientes funciones/operaciones:</p>
+<ul>
+  <li>Un constructor al que se le pase el grado del polinomio a almacenar. El
+    constructor debe inicializar los coeficientes del polinomio a cero.</li>
+  <li> <b>operator [ ]</b>. Pasándole un entero <i>i</i> devuelve una referencia 
+  al
+    coeficiente a<sub>i</sub>. Este operador 
+    será el único que nos permita modificar  el valor de cada coeficiente.</li>
+  <li> <b>grado.</b> Una función que devuelva el grado del
+  polinomio.</li>
+  <li> <b>muestra.</b> Un procedimiento que muestra el polinomio con
+  <a href="https://www.gedlc.ulpgc.es/docencia/ed_ii/privado0405/documentacion/poo/entradasalida.html">cout</a>. No muestre los 
+  términos con coeficiente cero. <u>En caso de que todos los coeficientes sean 
+  cero, muestra debe mostrar un cero</u>.</li>
+  <li> <b>valor. </b>Una función que pasándole un valor real&nbsp; "v", nos
+    devuelva el valor del polinomio para x=v.</li>
+  <li>Las que se consideren necesarias para el correcto funcionamiento de la 
+  clase en circunstancias normales, como poder <b>asignar</b> un polinomio a 
+  otro,
+    <b>pasarlo por valor </b>a una función, etc.</li>
+</ul>
+
+<p>También cree las siguientes funciones no miembro de la clase pero 
+relacionadas</p>
+<ul>
+  <li> <b>operator +.</b> Una función que devuelve el polinomio suma de dos
+  polinomios.</li>
+  <li> <b>operator -.</b> Una función que devuelve el polinomio resta de dos
+  polinomios.</li>
+  <li> <b>operator -.</b> Una función que devuelve la negación de un polinomio.</li>
+  <li> <b>operator *.</b> Una función que devuelve el polinomio multiplicación de dos
+  polinomios.</li>
+</ul>
+
+<table style="border-collapse: collapse;" id="AutoNumber1" border="3" bordercolor="#111111" cellpadding="4" cellspacing="0" width="100%">
+  <tbody><tr>
+    <td width="100%">Por simplicidad en la gestión del grado se debe considerar 
+    que el polinomio siempre tiene el grado original, aunque los coeficientes de 
+    mayor grado se vuelvan cero. Esto implica que :<ul>
+      <li>La función grado devuelve el grado con el que se crea el polinomio.</li>
+      <li>Las funciones suma y resta devuelven un polinomio de grado el mayor de 
+      los dos operandos.</li>
+      <li>La función negación devuelve un polinomio del mismo grado que el 
+      operando.</li>
+      <li>La función multiplicación devuelve un polinomio de grado la suma de 
+      los grados de los operandos.</li>
+    </ul>
+    </td>
+  </tr>
+</tbody></table>
+
+<h3>Implementación:</h3>
+
+<p>Para implementar la clase <b>Polinomio</b> utilice un vector de <b>reales</b> 
+(float)
+creado en memoria dinámica. Suponga que el elemento i del vector representa a<sub>i</sub>.</p>
+
+<p>Escriba la clase <b>Polinomio</b> en los ficheros polinomio.h y polinomio.cpp. 
+Implemente todas las funciones y/o procedimientos en polinomio.cpp (en el fichero polinomio.h 
+no se debe implementar ninguna función o procedimiento)</p>
+
+<h2>Pruebas de ejecución</h2>
+
+<p>Escriba un programa principal, en un fichero llamado pruebapolinomio.cpp, que compruebe
+la funcionalidad de todas las características solicitadas para la clase
+<b>Polinomio</b>.</p>
+
+<h2>Ejemplo de uso de la clase Polinomio</h2>
+<span class="grande">
+<pre class="algoritmo"><b>#include</b> &lt;iostream&gt;<b>
+using namespace</b> std<b>;
+#include</b> "polinomio.h"
+<b>int</b> main()
+{
+    Polinomio p(3);
+    p[0]=1;
+    p[1]=-1;
+    p[2]=2;
+    p[3]=-2;
+    p.muestra();
+    <b>for</b>(<b>float</b> i=-3; i&lt;=3; i+=0.5)
+      cout &lt;&lt; "Para "&lt;&lt;i &lt;&lt; " da "&lt;&lt; p.valor(i)&lt;&lt; endl;
+    <b>return</b> 0;
+}</pre>
+</span>
+
+<h2>Entrega de prácticas</h2>
+
+<p>Se debe entregar el fichero <b>polinomio.h</b>,
+<b>polinomio.cpp</b> y
+<b>pruebapolinomio.cpp</b>.</p>
+
+<hr width="100%">
+<p>
+<a href="https://www.gedlc.ulpgc.es/cgi-bin/gap/ed2.20042005/gap?menu"> <img src="practica2_files/gap" alt="GAP" border="0"></a></p>
+
+<p></p>
+</body></html>

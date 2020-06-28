@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0052)http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html -->
+<HTML><HEAD><TITLE>Paquetes</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="Zenón Hernández Figueroa" name=Author><LINK class="titulo 2" 
+href="Paquetes_archivos/estilos.css" type=text/css rel=stylesheet><LINK 
+href="Paquetes_archivos/estilos.css" type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY>Anterior | Superior | Siguiente 
+<H1 class=titulo>Guía de referencia básica de Ada 95</H1>
+<H1 class=titulo2>Paquetes.</H1>
+<H2><A name=Definicion></A>Definición y uso.</H2>Un paquete (<I>package</I>) es 
+una <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/unidades.html#Unidades">unidad</A> 
+que agrupa un conjunto de entidades relacionadas. Su aplicación más corriente es 
+para realizar la declaración de un tipo de datos junto con las operaciones 
+primitivas para su manejo, de forma que éstas puedan ser usadas desde el 
+exterior pero se mantengan ocultos sus detalles de funcionamiento. En otras 
+palabras, un paquete es un mecanismo de encapsulamiento y ocultación de 
+información especialmente útil para definir <I>tipos abstractos de datos</I>. Un 
+paquete se divide generalmente en dos partes: <I><A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html#especificacion">especificación</A> 
+</I>e <I><A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html#implementacion">implementación</A> 
+</I>que se sitúan en ficheros diferentes con las extensiones respectivas 
+<I>"*.ads"</I> y<I> "*.adb"</I>. 
+<H3><A name=especificacion></A>Especificación.</H3>La estructura de la 
+especificación de un paquete es la siguiente: 
+<P class=algoritmo><B>package</B> &lt;nombre_de_paquete&gt; <B>is</B> 
+<BR>&nbsp;&nbsp;&nbsp; &lt;elementos públicos&gt; <BR><B>private</B> 
+<BR>&nbsp;&nbsp;&nbsp; &lt;elementos privados&gt; <BR><B>end</B> 
+&lt;nombre_de_paquete&gt;;</P>
+<P>La parte anterior a la palabra <I>"private"</I> constituye la interfaz de los 
+servicios ofertados por el paquete (son accesibles a quien lo use). La parte que 
+sigue constituye la parte privada de la especificación, tales como la estructura 
+de datos con que se implementa un tipo ofrecido en la intefaz u otros elementos 
+similares. La palabra <I>"private"</I> puede omitirse, en cuyo caso se entiende 
+que la parte privada de la especificación es nula. La siguiente especificación 
+es de un paquete llamado <I>"Pila_De_enteros"</I> que ofrece un tipo llamado 
+"<I>Pila"</I> y cuatro operaciones primitivas para manejar pilas de valores de 
+tipo <I>Integer.</I></P>
+<P class=algoritmo><B>package</B> Pila_De_Enteros <B>is</B> <BR>&nbsp;&nbsp; 
+<B>type</B> Pila <B>is limited private</B>; <BR>&nbsp;&nbsp; <B>procedure</B> 
+Apilar(P: <B>in out</B> Pila;E: <B>in</B> Integer); <BR>&nbsp;&nbsp; 
+<B>procedure</B> Desapilar(P:i<B>n out</B> Pila); <BR>&nbsp;&nbsp; 
+<B>function</B> Cima(P: Pila) <B>return</B> Integer; <BR>&nbsp;&nbsp; 
+<B>function</B> Es_Vacía(P:Pila) <B>return</B> Boolean; <BR><B>private</B> 
+<BR>&nbsp;&nbsp; <B>type</B> Nodo <B>is record</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Info: Integer; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sig : Pila; <BR>&nbsp;&nbsp; <B>end</B> 
+<B>record</B>; <BR>&nbsp;&nbsp; <B>type</B> Pila <B>is</B> <B>access</B> Nodo; 
+<BR><B>end</B> Pila_De_Enteros;</P>
+<H3><A name=implementacion></A>Implementación.</H3>La especificación de un 
+paquete requiere una implementación si contiene declaraciones que requieran 
+completarse (por ejemplo, la declaración de una función requiere su desarrollo). 
+La estructura de un<I> "package body"</I> es: 
+<P class=algoritmo><B>package</B> <B>body</B> &lt;nombre_de_paquete&gt; 
+<B>is</B> <BR>&nbsp;&nbsp; &lt;desarrollo del paquete&gt; <BR><B>end</B> 
+&lt;nombre_de_paquete&gt;;</P>
+<P>Todas las declaraciones hechas en la especificación del paquete se pueden 
+usar en la implementación (body), aunque estén en la parte "private". Las 
+declaraciones hechas en el "package body" sólo se pueden usar en el mismo. A 
+continuación se muestra el <I>"package body"</I> del paquete 
+<I>"Pila_de_enteros"</I>:</P>
+<P class=algoritmo><B>with</B> Unchecked_Deallocation;<BR><B>package</B> 
+<B>body</B> Pila_De_Enteros <B>is</B> <BR>&nbsp;&nbsp; <B>procedure</B> Libera 
+<B>is new</B> Unchecked_Deallocation(Nodo,Pila); <BR>&nbsp;&nbsp; 
+<B>procedure</B> Apilar(P: i<B>n out</B> Pila;E: <B>in</B> Integer) <B>is</B> 
+<BR><B>&nbsp; &nbsp;begin</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P := <B>new</B> 
+Nodo'(E,P); <BR>&nbsp;&nbsp; <B>end</B> Apilar; <BR>&nbsp;&nbsp; 
+<B>procedure</B> Desapilar(P:i<B>n out</B> Pila) <B>is</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Aux: Pila := P; <BR>&nbsp;&nbsp; <B>begin</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P := P.Sig; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Libera(Aux); <BR>&nbsp;&nbsp; <B>end</B> 
+Desapilar; <BR>&nbsp;&nbsp; <B>function</B> Cima(P: Pila) <B>return</B> Integer 
+<B>is</B> <BR>&nbsp;&nbsp; <B>begin</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<B>return</B> P.Info; <BR>&nbsp;&nbsp; <B>end</B> Cima; <BR>&nbsp;&nbsp; 
+<B>function</B> Es_Vacía(P:Pila) <B>return</B> Boolean <B>is</B> 
+<BR>&nbsp;&nbsp; <B>begin</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>return</B> P 
+= null; <BR>&nbsp;&nbsp; <B>end</B> Es_Vacía; <BR><B>end</B> 
+Pila_De_Enteros;</P>
+<H3><A name=utilizacion></A>Utilización.</H3>Una vez compiladas la 
+especificación y la implementación de un paquete, se puede hacer uso del mismo 
+en otras unidades, simplemente incluyendo el nombre del paquete en sus cláusulas 
+de contexto. 
+<P class=algoritmo><B>with</B> Text_Io,<BR>&nbsp; &nbsp; 
+&nbsp;Ada.Integer_Text_Io,<BR>&nbsp; &nbsp; &nbsp;Pila_De_Enteros; 
+<BR><B>use</B> &nbsp;Text_Io,<BR>&nbsp; &nbsp; 
+&nbsp;Ada.Integer_Text_Io,<BR>&nbsp; &nbsp; 
+&nbsp;Pila_De_Enteros;<BR><B>procedure</B> Prueba <B>is</B> <BR>&nbsp;&nbsp; P: 
+Pila; <BR><B>begin</B> <BR>&nbsp;&nbsp; <B>for</B> I <B>in</B> 1..5 <B>loop</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apilar(P,I); <BR>&nbsp;&nbsp; <B>end 
+loop;</B> <BR>&nbsp;&nbsp; <B>while</B> <B>not</B> Es_Vacía(P) <B>loop</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Put(Cima(P)); 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New_Line; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Desapilar(P); <BR>&nbsp;&nbsp; <B>end loop</B>; <BR><B>end</B> Prueba;</P>
+<H2 class=NivelMedio><A name=genericos></A>Paquetes genéricos.</H2>Un paquete 
+genérico es el que posee <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/unidades.html#par_formales">parámetros</A> 
+que, al ser fijados, permite crear instancias no genéricas aplicables en 
+situaciones diferentes, reutilizando el código sin tener que reescribirlo. Por 
+ejemplo, en el caso de las pilas de enteros del ejemplo previo, es evidente que 
+tanto la estructura de datos del tipo Pila, como los algoritmos de manipulación 
+que la acompañan no dependen en realidad de que los elementos apilados sean de 
+tipo Integer. En consecuencia, se puede escribir un paquete genérico 
+parametrizando el tipo de los elementos, de forma que luego se puedan crear 
+instancias de pilas que acomoden distintos tipos de elementos. 
+<P>Especificación: se añade la lista de parámetros genéricos formales y se 
+sustituyen todas las apariciones de <I>Integer</I> por <I>T_Elemento,</I> el 
+párametro formal del paquete:</P>
+<P class=algoritmo><B>generic</B> <BR>&nbsp;&nbsp; <B>type</B> T_Elemento <B>is 
+private</B>; <BR><B>package</B> Pilas <B>is</B> <BR>&nbsp;&nbsp; <B>type</B> 
+Pila <B>is</B> <B>limited private</B>; <BR>&nbsp;&nbsp; <B>procedure</B> 
+Apilar(P: <B>in out</B> Pila;E: <B>in</B> T_Elemento); <BR>&nbsp;&nbsp; 
+<B>procedure</B> Desapilar(P:<B>in out</B> Pila); <BR>&nbsp;&nbsp; 
+<B>function</B> Cima(P: Pila) <B>return</B> T_Elemento; <BR>&nbsp;&nbsp; 
+<B>function</B> Es_Vacía(P:Pila) <B>return</B> Boolean; <BR><B>private</B> 
+<BR>&nbsp;&nbsp; <B>type</B> Nodo <B>is record</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Info: T_Elemento; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sig : Pila; <BR>&nbsp;&nbsp; <B>end 
+record</B>; <BR>&nbsp;&nbsp; <B>type</B> Pila <B>is access </B>Nodo; 
+<BR><B>end</B> Pilas;</P>
+<P>Implementación: se sustituyen todas las apariciones de <I>Integer </I>por 
+<I>T_Elemento</I>:</P>
+<P class=algoritmo><B>with</B> Unchecked_Deallocation;<BR><B>package</B> body 
+Pilas <B>is</B> <BR>&nbsp;&nbsp; <B>procedure</B> Libera <B>is</B> <B>new</B> 
+Unchecked_Deallocation(Nodo,Pila); <BR>&nbsp;&nbsp; <B>procedure</B> Apilar(P: 
+<B>in out</B> Pila;E: <B>in</B> T_Elemento) <B>is</B> <BR>&nbsp;&nbsp; 
+<B>begin</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P :=<B> new</B> Nodo'(E,P); 
+<BR>&nbsp;&nbsp; <B>end</B> Apilar; <BR>&nbsp;&nbsp; <B>procedure</B> 
+Desapilar(P:<B>in out</B> Pila) <B>i</B> s <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Aux: Pila := P; <BR>&nbsp;&nbsp; <B>begin</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+P := P.Sig; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Libera(Aux); <BR>&nbsp;&nbsp; 
+<B>end</B> Desapilar; <BR>&nbsp;&nbsp; <B>function</B> Cima(P: Pila) 
+<B>return</B> T_Elemento <B>is</B> <BR>&nbsp;&nbsp; <B>begin</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>return</B> P.Info; <BR>&nbsp;&nbsp; 
+<B>end</B> Cima; <BR>&nbsp;&nbsp; <B>function</B> Es_Vacía(P:Pila) <B>return</B> 
+Boolean <B>is</B> <BR>&nbsp;&nbsp; <B>begin</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>return</B> P = null; <BR>&nbsp;&nbsp; 
+<B>end</B> Es_Vacía; <BR><B>end</B> Pilas;</P>
+<P>Utilización: el nuevo paquete, <I>"Pilas"</I>, aparece en la sentencia<I> 
+with</I> de la cláusula de contexto, pero no así en la <I>use</I> puesto que al 
+ser genérico es sólo una plantilla a partir de la cual definir instancias, pero 
+no es en sí mismo una unidad utilizable directamente. La definición de una 
+instancia se hace especificando un nombre para el paquete no genérico al que 
+dará lugar y los valores reales correspondientes a los parámetros (al menos de 
+aquellos que no tengan un valor por defecto):</P>
+<P class=algoritmo><B>with</B> Text_Io,<BR>&nbsp; &nbsp; 
+&nbsp;Ada.Integer_Text_Io,<BR>&nbsp; &nbsp; &nbsp;Pilas; <BR><B>use</B> 
+Text_Io,<BR>&nbsp; &nbsp; Ada.Integer_Text_Io;<BR><B>procedure</B> Prueba 
+<B>is</B> <BR>&nbsp;&nbsp; <B>package</B> Pila_De_Enteros <B>is new</B> 
+Pilas(Integer); <BR>&nbsp;&nbsp; <B>use</B> Pila_De_Enteros; <BR>&nbsp;&nbsp; 
+<B>package</B> Pila_De_Reales <B>is new</B> Pilas(Float); <BR>&nbsp;&nbsp; 
+<B>use</B> Pila_De_Reales; <BR>&nbsp;&nbsp; P: Pila_De_Enteros.Pila;<BR>&nbsp; 
+&nbsp;Q: Pila_De_Reales.Pila;<BR><B>begin</B> <BR>&nbsp;&nbsp; <B>for</B> I 
+<B>in</B> 1..5 <B>loop</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apilar(P,I); 
+<BR>&nbsp;&nbsp; <B>end loop</B>; <BR>&nbsp;&nbsp; <B>while</B> <B>not</B> 
+Es_Vacía(P) <B>loop</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Put(Cima(P)); 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New_Line; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Desapilar(P); <BR>&nbsp;&nbsp; <B>end loop</B>; <BR><B>end</B> Prueba;</P>
+<H2 class=NivelAlto><A name=derivados></A>Herencia de paquetes.</H2>Se pueden 
+derivar paquetes a partir de otros existentes, creando lo que se llama un 
+paquete "hijo". Normalmente, lo que se pretende conseguir es añadir una nueva 
+funcionalidad sin tener que modificar el paquete original. El siguiente ejemplo 
+crea un paquete hijo de <I>"Pilas"</I> con el fin de proporcionar una operación 
+que permita obtener una copia de una pila. Además, se define una constante para 
+representar la pila vacía que, combinada con la operación de copia, permite 
+vaciar una pila con una sola sentencia: 
+<P class=algoritmo><B>generic</B> <BR><B>package</B> Pilas.Copiables <B>is</B> 
+<BR>&nbsp;&nbsp; Vacía: <B>constant</B> Pila; <BR>&nbsp;&nbsp; <B>procedure</B> 
+Copia(Pe: <B>in</B> Pila;Ps: <B>out</B> Pila); <BR><B>private</B> 
+<BR>&nbsp;&nbsp; Vacía: <B>constant</B> Pila := null; <BR><B>end</B> 
+Pilas.Copiables;</P>
+<P>Un paquete derivado de otro genérico tiene obligatoriamente que ser genérico 
+(aunque no precise parámetros, los precisa su padre). De un paquete no genérico 
+se puede derivar uno genérico.</P>
+<P class=algoritmo><B>package</B> body Pilas.Copiables <B>is</B> 
+<BR>&nbsp;&nbsp; <B>procedure</B> Vaciar(P:in out Pila) <B>is</B> 
+<BR>&nbsp;&nbsp; <B>begin</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>while</B> 
+not Es_Vacía(P) <B>loop</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Desapilar(P); <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>end loop</B>; 
+<BR>&nbsp;&nbsp; <B>end</B> Vaciar; <BR>&nbsp;&nbsp; <B>function</B> 
+Copia(P:Pila) <B>return</B> Pila <B>is</B> <BR>&nbsp;&nbsp; <B>begin</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>if</B> Es_Vacía(P) <B>then</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Vacía; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>else</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>return</B> <B>new</B> 
+Nodo'(Cima(P),Copia(P.Sig)); <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B>end</B> 
+<B>if</B>; <BR>&nbsp;&nbsp; <B>end</B> Copia; <BR>&nbsp;&nbsp; <B>procedure</B> 
+Copia(Pe: <B>in</B> Pila;Ps: <B>out</B> Pila) <B>is</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Aux: Pila := Copia(Pe); <BR>&nbsp;&nbsp; 
+<B>begin</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vaciar(Ps); 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ps := Aux; <BR>&nbsp;&nbsp; <B>end</B> Copia; 
+<BR><B>end</B> Pilas.Copiables;</P>
+<P>Obsérvese que ni en la especificación ni en la implementación aparece el 
+paquete original en una cláusula de contexto; no es necesario dado que es una 
+extensión del paquete y como tal tiene acceso a todo lo declarado en la 
+especificación del original, incluida la parte privada, aunque no así a lo 
+desarrollado en el <I>"package body"</I> .</P>
+<P>Una unidad que requiera toda la funcionalidad de los dos paquetes necesitará 
+incluirlos a ambos.</P>
+<P class=algoritmo><B>with</B> Text_Io, Ada.Integer_Text_Io, Pilas, 
+Pilas.Copiables; <BR><B>use</B> &nbsp;Text_Io, 
+Ada.Integer_Text_Io;<BR><B>procedure</B> Prueba <B>is</B> <BR>&nbsp;&nbsp; 
+<B>package</B> Pila_De_Enteros <B>is new</B> Pilas(Integer); <BR>&nbsp;&nbsp; 
+<B>use</B> Pila_De_Enteros; <BR>&nbsp;&nbsp; <B>package</B> Pilas_C <B>is 
+new</B> Pila_De_Enteros.Copiables; <BR>&nbsp;&nbsp; <B>use</B> Pilas_C; 
+<BR>&nbsp;&nbsp; P,Q: Pila; <BR><B>begin</B> <BR>&nbsp;&nbsp; <B>for</B> I 
+<B>in</B> 1..5 <B>loop</B> <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apilar(P,I); 
+<BR>&nbsp;&nbsp; <B>end loop</B>; <BR>&nbsp;&nbsp; Copia(P,Q); <BR>&nbsp;&nbsp; 
+Copia(Vacía,P); <BR>&nbsp;&nbsp; <B>while</B> <B>not</B> Es_Vacía(Q) <B>loop</B> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Put(Cima(Q)); 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New_Line; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Desapilar(Q); <BR>&nbsp;&nbsp; <B>end loop</B>; <BR><B>end</B> Prueba;</P>
+<P>Los paquete derivados y sus ancestros forman una jerarquía que se conoce como 
+familia o sistema de paquetes.</P>
+<P class=pie>Grupo de Estructuras de Datos y Lingüística Computacional - 
+ULPGC</P>
+<P>Anterior | Superior | Siguiente</P></BODY></HTML>

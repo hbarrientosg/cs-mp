@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0087)http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/practica2.html -->
+<HTML><HEAD><TITLE>Implementación de un tad contenedor lineal.</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="Zenón Hernández Figueroa" name=Author>
+<META content="MSHTML 6.00.2722.900" name=GENERATOR><LINK class="titulo 2" 
+href="Implementación de un tad contenedor lineal_archivos/estilos.css" 
+type=text/css rel=stylesheet><LINK 
+href="Implementación de un tad contenedor lineal_archivos/estilos.css" 
+type=text/css rel=stylesheet></HEAD>
+<BODY>
+<H1>Prácticas de Estructuras de Datos I</H1>
+<H1 class=titulo2>Implementación de un tad contenedor lineal</H1>
+<H2>General.</H2>Se propone un ejercicio de desarrollo de un contenedor lineal, 
+el tad Cola. La especificación abstracta del tad es la que se encuentra en los 
+apuntes de la asignatura. Se definen dos variantes que se diferenciarán según 
+criterios de optimización de recursos: la cola de tamaño dinámico y la cola de 
+tamaño restringido, que responden a una interfaz casi idéntica. Se deberán 
+desarrollar ambas versiones con los mecanismos más adecuados a cada caso, 
+construyendo los ficheros prac02d.ads y prac02d.adb para la versión dinámica y 
+prac02r.ads y prac02r.adb para la restringida. Las pruebas se realizarán con los 
+programas contenidos en los ficheros <A 
+href="http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/programas/prac02d.ada">prac02d.ada</A> 
+y <A 
+href="http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/programas/prac02r.ada">prac02r.ada</A> 
+para las respectivas versiones y <A 
+href="http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/programas/prac02.ada">prac02.ada</A> 
+para ambas en conjunto. <BR>Los conocimientos específicos de Ada necesarios para 
+realizar esta práctica son los relacionados con la creación de <A 
+href="http://www.gedlc.ulpgc.es/docencia/NGA/paquetes.html#genericos">paquetes 
+genéricos</A>. 
+<H2>Marco teórico.</H2>La especificación abstracta del tad es la que aparece en 
+el tema "Contenedores lineales" de los apuntes de la asignatura con el nombre 
+<I>especificación Colas</I>. <BR>Definimos el término "<B>contenedor restringido 
+en tamaño</B>" en referencia a uno en el cual se ha limitado, al declararlo, el 
+número máximo de elementos que puede contener. En aquellos problemas donde el 
+número máximo de elementos a tratar es conocido a priori, el concepto de tamaño 
+restringido permite utilizar sin dificultad desarrollos con estructuras de 
+representación estáticas (ej. arrays) y evitar así tener que preocuparse por la 
+gestión del almacenamiento en la medida en que haya que hacerlo cuando se 
+utilizan estructuras de representación dinámicas. <BR>Aplicando el concepto 
+anterior al caso de las colas, podríamos hablar de colas de tamaño restringido 
+que podríamos utilizar en problemas en los que conocemos a priori el número 
+máximo de elementos que van a almacenarse. Hablaremos de colas de tamaño 
+dinámico cuando permitan almacenar un número indefinido de elementos, no 
+limitado a priori. 
+<H2>Ejercicio a realizar.</H2>Se desarrollarán dos paquetes genéricos: uno 
+llamado <I>Colas_Dinámicas</I>&nbsp; y otro denominado 
+<I>Colas_Restringidas</I>. Ambos ofrecerán un tipo llamado <I>Cola</I> y tendrán 
+como parámetro el tipo de los elementos que contendrá (El tipo <I>Cola</I> 
+corresponde al tipo <I>TCola</I> de la especificación abstracta). El paquete 
+<I>Colas_Restringidas</I> tendrá además un segundo parámetro, que será un valor 
+entero positivo (<I>positive</I>), y que indicará el número máximo de elementos 
+de las colas de tamaño restringido; si no se especifica otro, este parámetro 
+tendrá por defecto el valor 50. Además, ambos paquetes ofrecerán: 
+<H3>Operaciones.</H3>
+<BLOCKQUOTE><B>Procedimiento </B>Insertar(C,E) <BR>Inserta un elemento en una 
+  cola. <BR><U>entrada/salida</U>: C es un parámentro de tipo <I>Cola</I> en la 
+  que se añade el elemento representado por el segundo parámetro, conforme a la 
+  especificación abstracta. <BR><U>entrada</U>: E es un parámetro del tipo de 
+  los elementos que componen la cola. 
+  <P><B>Procedimiento </B>Extraer(C) <BR>Extrae un elemento de una cola. 
+  <BR><U>entrada/salida</U>: C es un parámentro de tipo <I>Cola</I> de la que se 
+  elimina un elemento, conforme a la especificación abstracta. 
+  <BR><U>precondición</U>: la cola no puede estar vacía cuando se va a extraer. 
+  </P>
+  <P><B>Función </B>Es_Vacía(C) <BR>Determina si una cola está vacía. 
+  <BR><U>entrada</U>: C es un parámetro de tipo <I>Cola</I>. 
+  <BR><U>resultado</U>: de tipo <I>boolean</I>, <I>true</I> si la cola está 
+  vacía y <I>false</I> si no lo está. </P>
+  <P><B>Función </B>Examinar(C) <BR>Devuelve el primer elemento de una cola. 
+  <BR><U>entrada</U>: C es un parámetro de tipo <I>Cola</I>. 
+  <BR><U>resultado</U>: del tipo de los elementos de la cola, conforme a la 
+  especificación abstracta. <BR><U>precondición</U>: la cola no puede estar 
+  vacía cuando se va a examinar. </P>
+  <P><B>Función </B>Tamaño(C) <BR>Devuelve el tamaño de una cola. 
+  <BR><U>entrada</U>: C es un parámetro de tipo <I>Cola</I>. 
+  <BR><U>resultado</U>: de tipo <I>natural</I>, el número de elementos de la 
+  cola, conforme a la especificación abstracta.</P></BLOCKQUOTE>
+<H3>Excepciones.</H3>
+<BLOCKQUOTE><I>E_Cola_Llena</I>: se lanzará cuando, en una operación de 
+  inserción, no quede espacio para insertar el nuevo elemento en la cola. 
+  <BR><I>E_Cola_Vacía</I>: se lanzará cuando se intente, con una cola vacía, 
+  realizar una operación que requiera que la cola no esté vacía.</BLOCKQUOTE>
+<H2>A tener en cuenta.</H2>El tipo <I>Cola</I> no debe admitir operaciones de 
+asignación ni de comparación.<BR>Cada uno de los paquetes se desarrollará usando 
+los mecanismos más adecuados al caso.<BR>No se incluye explícitamente la 
+operación Vacía que aparece en la especificación abstracta. No obstante, el tipo 
+Cola debe definirse de tal manera que siempre que se declare una variable ésta 
+represente una cola vacía. Además, cualquier cola puede volver al estado de 
+vacía si se extraen todos sus elementos. <BR>&nbsp; <BR></BODY></HTML>

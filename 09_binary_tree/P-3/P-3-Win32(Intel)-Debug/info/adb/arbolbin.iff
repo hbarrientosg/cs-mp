@@ -1,0 +1,23 @@
+SOURCE: ..\..\arbolbin.adb
+  SRCTIME: 1054224892    Thu May 29 15:14:52 2003
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+SRCDEP: src\unchecked_deallocation.ada
+  SRCDEPTIME: 857457980    Tue Mar 04 05:46:20 1997
+SRCDEP: src\ada.ada
+  SRCDEPTIME: 918049390    Wed Feb 03 12:43:10 1999
+SRCDEP: ..\..\arbolbin.ads
+  SRCDEPTIME: 1054224896    Thu May 29 15:14:56 2003
+UNIT: Arbol_Bin
+  UKIND: 8    PKG_BODY
+  DEP: Arbol_Bin
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\arbolbin.ads
+    DEPSRCTIME: 1054224896    Thu May 29 15:14:56 2003
+  DEP: Unchecked_Deallocation
+    DEPKIND: 6    SUBP_GENERIC_RENAME
+    DEPSRC: src\unchecked_deallocation.ada
+    DEPSRCTIME: 857457980    Tue Mar 04 05:46:20 1997
+  FEATURES: 16#8000400002800#(-1,-1,-1,-1,-1,-1)
+  ELABLINKNAME: arbol_bin__elab_subp
+ENDUNIT

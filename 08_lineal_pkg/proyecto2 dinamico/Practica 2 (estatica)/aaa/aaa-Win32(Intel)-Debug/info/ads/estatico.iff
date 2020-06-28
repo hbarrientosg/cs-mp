@@ -1,0 +1,9 @@
+SOURCE: ..\..\..\..\estatico.ads
+  SRCTIME: 1051137796    Wed Apr 23 21:43:16 2003
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+UNIT: Colas_restringidas
+  UKIND: 9    PKG_GENERIC
+  NEED: Colas_restringidas
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT

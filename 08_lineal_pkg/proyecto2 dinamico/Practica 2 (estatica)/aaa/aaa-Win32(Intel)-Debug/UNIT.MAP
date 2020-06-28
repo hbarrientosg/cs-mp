@@ -1,0 +1,21 @@
+SOURCE: ..\..\..\..\prac.ada
+  SRCTIME: 1052083637    Sun May 04 20:27:17 2003
+  UNIT: Prueba_Colas
+    UKIND: 2    SUBP_BODY
+ENDSOURCE
+SOURCE: ..\..\..\..\estatico.adb
+  SRCTIME: 1052083795    Sun May 04 20:29:55 2003
+  UNIT: Colas_restringidas
+    UKIND: 8    PKG_BODY
+ENDSOURCE
+SOURCE: ..\..\..\..\estatico.ads
+  SRCTIME: 1051137796    Wed Apr 23 21:43:16 2003
+  UNIT: Colas_restringidas
+    UKIND: 9    PKG_GENERIC
+ENDSOURCE
+SOURCE: ..\..\..\..\sin.ada
+  SRCTIME: 1051228156    Thu Apr 24 22:49:16 2003
+  INVALID: True
+  UNIT: Prueba_Colas
+    UKIND: 2    SUBP_BODY
+ENDSOURCE

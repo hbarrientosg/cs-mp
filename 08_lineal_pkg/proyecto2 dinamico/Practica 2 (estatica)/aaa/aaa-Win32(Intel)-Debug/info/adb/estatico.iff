@@ -1,0 +1,15 @@
+SOURCE: ..\..\..\..\estatico.adb
+  SRCTIME: 1052083795    Sun May 04 20:29:55 2003
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+SRCDEP: ..\..\..\..\estatico.ads
+  SRCDEPTIME: 1051137796    Wed Apr 23 21:43:16 2003
+UNIT: Colas_restringidas
+  UKIND: 8    PKG_BODY
+  DEP: Colas_restringidas
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\..\..\estatico.ads
+    DEPSRCTIME: 1051137796    Wed Apr 23 21:43:16 2003
+  FEATURES: 16#8000000002000#(-1,-1,-1,-1,-1,-1)
+  ELABLINKNAME: colas_restringidas__elab_subp
+ENDUNIT

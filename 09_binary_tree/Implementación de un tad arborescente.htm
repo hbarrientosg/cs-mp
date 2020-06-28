@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0087)http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/practica3.html -->
+<HTML><HEAD><TITLE>Implementación de un tad arborescente.</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="Zenón Hernández Figueroa" name=Author><LINK class="titulo 2" 
+href="Implementación de un tad arborescente_archivos/estilos.css" type=text/css 
+rel=stylesheet><LINK 
+href="Implementación de un tad arborescente_archivos/estilos.css" type=text/css 
+rel=stylesheet>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY>
+<H1>Prácticas de Estructuras de Datos I</H1>
+<H1 class=titulo2>Implementación de un tad arborescente</H1>
+<H2>General.</H2>Se propone la implementación del tad <I>TDiccionario</I>, 
+utilizando otro tad llamado<I> Arbol</I> cuya <A 
+href="http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/programas/arbolbin.ads">especificación</A> 
+e <A 
+href="http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/programas/arbolbin.adb">implementación</A> 
+se proporcionan. Se debe tener cuidado de no modificar el tad <I>Arbol</I>, que 
+se debe usar tal cual. El fichero <A 
+href="http://www.gedlc.ulpgc.es/docencia/ed_i/SoloAlumnos/practicas/pr20022003/programas/prac03.ada">prac03.ada</A> 
+puede utilizarse para realizar pruebas. 
+<H2>Marco teórico.</H2>Una posible forma de almacenar palabras en un árbol 
+binario es descomponerlas en sus caracteres, insertando cada carácter en un 
+nodo, de forma que al moverse hacia la izquierda se avance al siguiente carácter 
+de la palabra, y al moverse hacia la derecha se avance a un carácter alternativo 
+(mayor) correspondiente a otra palabra que comparte el mismo prefijo, tal como 
+se muestra en el dibujo. Se utiliza el carácter asterisco ('*') como indicador 
+de fin de palabra, ello es necesario, dado que puede haber palabras que sean 
+prefijo de otras. Una palabra sólo puede aparecer una vez en el árbol. 
+<P><IMG height=362 src="Implementación de un tad arborescente_archivos/trie.gif" 
+width=437></P>
+<P><I>En el árbol de la figura se hallan las palabras: ASMA, ASTA, CAMA, CASA, 
+CATA, PELO.</I></P>
+<H2>Ejercicio a realizar.</H2>Se pide implementar un paquete llamado 
+<I>Conjunto_De_Palabras</I>, que ofrezca un tipo <I>TDiccionario</I> capaz de 
+almacenar palabras. El tipo <I>TDiccionario</I> estará implementado en la forma 
+descrita en el apartado anterior, usando para ello el tad <I>Arbol</I> 
+proporcionado en el paquete <I>Arbol_Bin</I> . Los ficheros que contengan el 
+paquete <I>Conjunto_De_Palabras</I> deben llamarse <I>prac03.ads</I> y 
+<I>prac03.adb</I>. El tad <I>TDiccionario</I> debe ofrecer las operaciones que 
+se relacionan a continuación. 
+<H3>Operaciones.</H3>
+<BLOCKQUOTE><B>Nombre de la operación:</B> Insertar. <BR><B>Clase de 
+  operación:</B> procedimiento. <BR><B>Parámetros:</B> <BR>&nbsp;&nbsp;&nbsp; 
+  1º: De entrada/salida, de tipo TDiccionario. <BR>&nbsp;&nbsp;&nbsp; 2º: De 
+  entrada, de tipo Unbounded_String. <BR><B>Acción:</B> Inserta en el 
+  TDiccionario representado por el primer parámetro la palabra representada por 
+  el segundo. Si la palabra ya está, no debe apreciarse ningún efecto. 
+  <P><B>Nombre de la operación:</B> Está. <BR><B>Clase de operación:</B> 
+  función. <BR><B>Parámetros:</B> <BR>&nbsp;&nbsp;&nbsp; 1º: De entrada, de tipo 
+  TDiccionario. <BR>&nbsp;&nbsp;&nbsp; 2º: De entrada, de tipo Unbounded_String. 
+  <BR><B>Resultado:</B> boolean. <BR><B>Acción:</B> Devuelve verdadero si la 
+  palabra representada por el segundo parámetro se encuentra en el TDiccionario 
+  representado por el primero y falso en otro caso.</P>
+  <P><B>Nombre de la operación:</B> Palabras. <BR><B>Clase de operación:</B> 
+  función. <BR><B>Parámetros:</B> <BR>&nbsp;&nbsp;&nbsp; 1º: De entrada, de tipo 
+  TDiccionario. <BR><B>Resultado:</B> natural <BR><B>Acción:</B> Devuelve el 
+  número de palabras almacenadas en el TDiccionario.</P>
+  <P><B>Nombre de la operación:</B> Caracteres. <BR><B>Clase de operación:</B> 
+  función. <BR><B>Parámetros:</B> <BR>&nbsp;&nbsp;&nbsp; 1º: De entrada, de tipo 
+  TDiccionario. <BR><B>Resultado:</B> natural. <BR><B>Acción:</B> Devuelve el 
+  número de caracteres distintos de asterisco que se hallan almacenados en el 
+  TDiccionario.. <BR>&nbsp;</P></BLOCKQUOTE>
+<H3>Excepciones.</H3>
+<BLOCKQUOTE><I>E_No_Espacio</I>: Se lanzará cuando, en una operación de 
+  inserción, no quede espacio para insertar.</BLOCKQUOTE>
+<H2>A tener en cuenta.</H2>Puede desarrollar las operaciones internas que 
+considere oportunas, si resultan útiles para facilitar una buena implementación. 
+<BR>&nbsp; </BODY></HTML>

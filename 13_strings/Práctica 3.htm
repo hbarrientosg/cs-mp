@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0077)http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/practicas/practica3.html -->
+<HTML><HEAD><TITLE>Práctica 3</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="JC y MD" name=Author><LINK href="Práctica 3_archivos/estilos.css" 
+type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2800.1276" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=titulo1>Prácticas de Metodología de la Programación II y 
+      Tecnología de la Programación</TD>
+    <TD class=titulo2 noWrap>Práctica 3: Ristras y ficheros. <BR>(Valoración 
+      25%)</TD>
+    <TD>
+      <DIV align=right><A title=GAP 
+      href="http://www.gedlc.ulpgc.es/cgi-bin/gap/mp2.20032004/gap?menu"><IMG 
+      alt=GAP src="Práctica 3_archivos/gap" 
+border=0></A></DIV></TD></TR></TBODY></TABLE>
+<H2>Objetivos:</H2>Que el alumno adquiera destreza en el uso de ristras y 
+ficheros en lenguaje C.
+<H2>Conocimientos previos</H2>
+<P>El alumno debe conocer cómo implementa C las <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/TiposConstruidos.html#Ristras de caracteres">ristras 
+de caracteres</A> sus <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/BibliotecaFunciones.html#string.h">funciones 
+de manipulación</A> y el <A 
+href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/c.html/Ficheros.html">manejo 
+de ficheros</A>.</P>
+<H2>Ejercicio</H2>
+<P>En internet se tienen servicios que permiten participar en foros de 
+discusión&nbsp; para hacer consultas o debatir sobre algún tema. Los foros de 
+discusión disponen de mecanismos para gestionar los mensajes enviados por sus 
+participantes. Los mensajes contienen normalmente un autor, un resumen y un 
+contenido y, a veces, son respuestas a otros mensajes en el foro por lo que 
+puede haber una relación entre mensajes.</P>
+<P>En este ejercicio se debe desarrollar un módulo que gestione el 
+almacenamiento de los mensajes de un foro de discusión en un fichero binario de 
+acceso directo. Los mensajes se almacenarán en el fichero usando un tipo 
+<B>struct</B> a definir por el alumno.</P>
+<P>Los mensajes se identifican por el número de registro que ocupan en el 
+fichero, comenzando en cero. Cada mensaje tendrá un autor, un título, un 
+contenido y una referencia a otro mensaje. La referencia es el identificador de 
+otro identificador de mensaje. En caso de que un mensaje no tenga relación con 
+otro, su campo de referencia debe valer -1. El campo autor tendrá un límite de 
+19 caracteres, el título tendrá hasta 39 y el contenido tendrá hasta 999. 
+<U>Estas cantidades no cuentan el marcador de final de ristra</U>. El 
+<B>struct</B> a definir, además de los datos anteriores, debe tener algún 
+mecanismo para saber si un mensaje está anulado o no.</P>
+<P>Los mensajes inicialmente son válidos, pero se podrán anular. La anulación de 
+un mensaje supone la no intervención de éste en otras operaciones aunque su 
+espacio seguirá ocupado en el fichero. El espacio de un mensaje anulado no se 
+podrá reusar por otro mensaje y sólo es posible anular mensajes válidos. La 
+anulación de un mensaje no afecta a los que los referencien.</P>
+<H3><A name=interfaz></A>Operaciones a implementar</H3>
+<P>Todas las operaciones sobre el foro se basan en el nombre del fichero donde 
+se almacena y es siempre su primer parámetro.</P>
+<TABLE border=1>
+  <TBODY>
+  <TR class=encabezadotabla>
+    <TD noWrap>Declaración prototipo</TD>
+    <TD>Descripción</TD></TR>
+  <TR>
+    <TD noWrap>int creaForo(const char *nf)</TD>
+    <TD>Crea un fichero para almacenar el foro o lo vacía si ya existe.
+      <P>Devuelve 1 si tiene éxito ó 0 en caso contrario.</P></TD></TR>
+  <TR>
+    <TD noWrap>int ponMensaje(const char *nf, const char *autor, 
+      <BR>&nbsp;&nbsp;&nbsp;&nbsp; const char *titulo, const char *contenido, 
+      int ref)</TD>
+    <TD>Se añade al final del fichero un nuevo mensaje.
+      <P>La función devuelve el identificador del mensaje o -1 en caso de no 
+      poderse realizar la operación.</P></TD></TR>
+  <TR>
+    <TD noWrap>int leeMensaje(const char *nf, int ident, char 
+      *autor,<BR>&nbsp;&nbsp;&nbsp;&nbsp; char *titulo, char *contenido, int 
+      *ref)</TD>
+    <TD>Se lee un mensaje del foro rellenando los campos correspondientes con 
+      los valores leídos. El parámetro <I>ident</I>, de entrada, establece el 
+      identificador del mensaje a leer.
+      <P>Devuelve 1 si tiene éxito ó 0&nbsp; en caso no poderse realizar la 
+      operación o se intente leer un mensaje anulado.</P></TD></TR>
+  <TR>
+    <TD noWrap>int anulaMensaje(const char *nf, int ident)</TD>
+    <TD>Anula el mensaje cuyo identificador viene dado en el parámetro 
+      <I>ident</I>.
+      <P>Devuelve 1 si tiene éxito ó 0&nbsp; en caso contrario.</P></TD></TR>
+  <TR>
+    <TD noWrap>int numeroMensajes(const char *nf)</TD>
+    <TD>Devuelve el número de mensajes válidos en el foro o -1 en caso de 
+      error.</TD></TR>
+  <TR>
+    <TD noWrap>int identificadoresMensajes(const char 
+      *nf,<BR>&nbsp;&nbsp;&nbsp; int identificadores[], int maxid)</TD>
+    <TD>Rellena el vector <I>identificadores,</I> hasta un máximo indicado en 
+      el parámetro <I>maxid</I>, con los identificadores de los mensajes 
+      válidos, en el orden en que fueron insertados.
+      <P>Devuelve el número de datos almacenados en el vector 
+      <I>identificadores</I> o -1 en caso de no poderse completar la 
+      operación.</P></TD></TR>
+  <TR>
+    <TD noWrap>int buscaMensajes(const char *nf,<BR>&nbsp;const char 
+      *abuscar,&nbsp; int identificadores[], int maxid)</TD>
+    <TD>Rellena el vector <I>identificadores,</I> hasta un máximo indicado en 
+      el parámetro <I>maxid</I>, con los identificadores de los mensajes válidos 
+      que en su campo contenido aparezca la ristra del parámetro <I>abuscar</I>. 
+      La búsqueda es sensible a mayúsculas y minúsculas.
+      <P>Devuelve el número de datos almacenados en el vector 
+      <I>identificadores</I> o -1 en caso de no poderse completar la 
+      operación.</P></TD></TR></TBODY></TABLE>
+<H3>Ficheros a entregar</H3>
+<P>El alumno escribirá el módulo solicitado en los ficheros "foro.c" y "foro.h", 
+únicos ficheros a entregar.</P>
+<H3>Ejemplo de uso</H3><PRE class=algoritmo><B>#include</B> &lt;stdio.h&gt;
+<B>#include</B> "foro.h"
+<B>int</B> main()
+{
+    <B>const char</B> *nff="foro.dat";
+    <B>int</B> idp, i, idm, ident[10];
+    creaForo(nff);
+    idp=ponMensaje(nff,"pepe","Primer mensaje","Contenido 1 ...",-1);
+    ponMensaje(nff,"juan","Otro mensaje","Contenido 2 ...",-1);
+    idm=ponMensaje(nff,"antonio","Mas mensajes","Contenido 3 ...",-1);
+    ponMensaje(nff,"pepe","Re:Mas mensajes","Bla, bla, ...",idm);
+    printf("Mensajes almacenados %d \n", numeroMensajes(nff));
+    anulaMensaje(nff,idp);
+    printf("Mensajes almacenados %d \n", numeroMensajes(nff));
+    idm=identificadoresMensajes(nff,ident,10);
+    <B>for</B>(i=0; i&lt;idm; i++){
+      <B>char</B> autor[20], titulo[40], contenido[1000];
+      <B>int</B> referencia;
+      leeMensaje(nff,ident[i],autor,titulo,contenido,&amp;referencia);
+      printf("%3d: %s =&gt; %s\n",ident[i],autor,titulo);
+    }
+    printf("Busqueda\n");
+    idm=buscaMensajes(nff,"ficheros C",ident,10);
+    <B>for</B>(i=0; i&lt;idm; i++){
+      <B>char</B> autor[20], titulo[40], contenido[1000];
+      <B>int</B> referencia;
+      leeMensaje(nff,ident[i],autor,titulo,contenido,&amp;referencia);
+      printf("Encontrado %3d: %s =&gt; %s\n",ident[i],autor,titulo);
+    }
+    <B>return</B> 0;
+}</PRE>
+<TABLE id=AutoNumber1 style="BORDER-COLLAPSE: collapse" borderColor=#111111 
+cellSpacing=0 cellPadding=0 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TD width="100%">Nota: El código anterior NO es una 
+prueba.</TD></TR></TBODY></TABLE>
+<H2>A tener en cuenta.</H2>
+<UL>
+  <LI>Para usar las funciones anteriores es necesario incluir el fichero <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/libc-202/libc_25.html">stdio.h</A>.&nbsp; 
+
+  <LI>El fichero de almacenamiento debe abrirse en modo binario. 
+  <LI>La función <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/libc-202/libc_299.html">feof</A> 
+  no funciona siempre como se espera. Por esta razón muchas veces se produce un 
+  intento de lectura en la que no se lee nada. Para evitar esto hay que tener en 
+  cuenta lo que devuelven las funciones de lectura: <A 
+  href="http://www.gedlc.ulpgc.es/docencia/mp_ii/privado0304/libc-202/libc_307.html">fread 
+  </A>devuelve 0 si no ha leído nada. 
+  <LI>Se deben respetar los nombres de ficheros, funciones, así como el tipo, 
+  posición y número de parámetros de las funciones y procedimientos solicitados 
+  en el enunciado. 
+  <LI>Las funciones de las bibliotecas que se empleen deben ser compatibles 
+  ansi. </LI></UL>
+<HR width="100%">
+<BR><BR></BODY></HTML>

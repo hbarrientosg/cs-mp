@@ -1,0 +1,18 @@
+                        METODO DE SHELL                             
+         Vector inversamente             Vector aleatorio           
+       Comparaciones Movimientos Tiempo Comparaciones Movimientos Tiempo 
+   1000     12706      9400     0.0000       15561      15110    0.0000
+   2000     28406     20800     0.0000       37363      38715    0.0000
+   4000     62806     45600     0.0000       86834      93657    0.0015
+   8000    137606     99200     0.0000      206044     236076    0.0047
+  16000    299206    214400     0.0000      494449     604886    0.0094
+  32000    646406    460800     0.0000     1184382    1536753    0.0250
+             METODO DE INSERCION LINEAL CON INTERCAMBIO             
+         Vector inversamente             Vector aleatorio           
+       Comparaciones Movimientos Tiempo Comparaciones Movimientos Tiempo 
+   1000     500499      500500    0.0150       240794     240795   0.0047
+   2000    2000999     2001000    0.0310       959761     959762   0.0172
+   4000    8001999     8002000    0.1410      3850455    3850456   0.0656
+   8000   32003999    32004000    0.5630     15428579   15428582   0.2734
+  16000  128007999   128008000    2.2810     61654150   61654150   1.1109
+  32000  512015999   512016000    9.1100    247419187  247419187   4.4671

@@ -1,0 +1,132 @@
+BODY {
+	BACKGROUND: #ffffcc; COLOR: black; FONT-FAMILY: Garamond, sans-serif
+}
+H1 {
+	BORDER-RIGHT: thin; BORDER-TOP: thin; FONT-WEIGHT: normal; FONT-SIZE: 150%; BACKGROUND: #000099; BORDER-LEFT: thin; WIDTH: 100%; COLOR: #ffffff; BORDER-BOTTOM: thin; FONT-FAMILY: sans-serif  , "Times New Roman"; TEXT-ALIGN: center
+}
+.titulo {
+	BORDER-RIGHT: thin; BORDER-TOP: thin; FONT-WEIGHT: normal; FONT-SIZE: 150%; BACKGROUND: #000099; BORDER-LEFT: thin; WIDTH: 100%; COLOR: #ffffff; BORDER-BOTTOM: thin; FONT-FAMILY: sans-serif  , "Times New Roman"; TEXT-ALIGN: center
+}
+H1 A {
+	COLOR: yellow; BACKGROUND-COLOR: #000099
+}
+.titulo A {
+	COLOR: yellow; BACKGROUND-COLOR: #000099
+}
+.titulo1 {
+	BORDER-RIGHT: thin; BORDER-TOP: thin; FONT-WEIGHT: normal; FONT-SIZE: 150%; BACKGROUND: #000099; BORDER-LEFT: thin; WIDTH: 50%; COLOR: #ffffff; BORDER-BOTTOM: thin; FONT-FAMILY: sans-serif  , "Times New Roman"; TEXT-ALIGN: center
+}
+.titulo2 {
+	BORDER-RIGHT: thin; BORDER-TOP: thin; FONT-WEIGHT: normal; FONT-SIZE: 130%; BACKGROUND: #ffcc99; BORDER-LEFT: thin; WIDTH: 50%; COLOR: #000000; BORDER-BOTTOM: thin; FONT-FAMILY: sans-serif  , "Times New Roman"; TEXT-ALIGN: center
+}
+H2 {
+	BORDER-RIGHT: thin; BORDER-TOP: thin; FONT-WEIGHT: bold; FONT-SIZE: 120%; BACKGROUND: #ffff99; BORDER-LEFT: thin; WIDTH: 100%; COLOR: navy; BORDER-BOTTOM: thin; FONT-FAMILY: "Garamond", "Times New Roman", serif
+}
+.subtitulo {
+	BORDER-RIGHT: thin; BORDER-TOP: thin; FONT-WEIGHT: bold; FONT-SIZE: 120%; BACKGROUND: #ffff99; BORDER-LEFT: thin; WIDTH: 100%; COLOR: navy; BORDER-BOTTOM: thin; FONT-FAMILY: "Garamond", "Times New Roman", serif
+}
+H3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 110%; PADDING-BOTTOM: 0%; FONT-FAMILY: "Garamond", "Times New Roman", serif; TEXT-DECORATION: underline
+}
+.apartado {
+	FONT-WEIGHT: bold; FONT-SIZE: 110%; PADDING-BOTTOM: 0%; FONT-FAMILY: "Garamond", "Times New Roman", serif; TEXT-DECORATION: underline
+}
+H4 {
+	FONT-SIZE: 100%
+}
+H5 {
+	FONT-SIZE: 90%
+}
+H6 {
+	FONT-SIZE: 80%
+}
+A:hover {
+	BACKGROUND: #33ff99; COLOR: blue
+}
+.boton A:hover {
+	BORDER-RIGHT: teal 3px solid; BORDER-TOP: #ffffe1 3px solid; DISPLAY: block; FONT-SIZE: 105%; BACKGROUND: yellow; BORDER-LEFT: #ffffe1 3px solid; COLOR: #000099; BORDER-BOTTOM: teal 3px solid; FONT-FAMILY: "Arial", "Times New Roman",sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.boton A:active {
+	BORDER-RIGHT: #ffffe1 3px solid; BORDER-TOP: teal 3px solid; DISPLAY: block; FONT-SIZE: 105%; BACKGROUND: yellow; BORDER-LEFT: teal 3px solid; COLOR: #000099; BORDER-BOTTOM: #ffffe1 3px solid; FONT-FAMILY: "Arial", "Times New Roman",sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.boton A {
+	BORDER-RIGHT: #000099 3px solid; BORDER-TOP: #000099 3px solid; DISPLAY: block; FONT-SIZE: 105%; BACKGROUND: #000099; BORDER-LEFT: #000099 3px solid; COLOR: yellow; BORDER-BOTTOM: #000099 3px solid; FONT-FAMILY: "Arial", "Times New Roman",sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.boton1 A:hover {
+	BORDER-RIGHT: black 3px solid; BORDER-TOP: #ffff99 3px solid; DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 105%; BACKGROUND: #e5e5af; BORDER-LEFT: #ffff99 3px solid; COLOR: navy; BORDER-BOTTOM: black 3px solid; FONT-FAMILY: "Arial", "Times New Roman",sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.boton1 A:active {
+	BORDER-RIGHT: #ffff99 3px solid; BORDER-TOP: black 3px solid; DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 105%; BACKGROUND: #cccc66; BORDER-LEFT: black 3px solid; COLOR: blue; BORDER-BOTTOM: #ffff99 3px solid; FONT-FAMILY: "Arial", "Times New Roman",sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.boton1 A {
+	BORDER-RIGHT: black 3px solid; BORDER-TOP: #ffff99 3px solid; DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 105%; BACKGROUND: #cccc66; BORDER-LEFT: #ffff99 3px solid; COLOR: blue; BORDER-BOTTOM: black 3px solid; FONT-FAMILY: "Arial", "Times New Roman",sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.boton2 A:hover {
+	BORDER-RIGHT: black 3px solid; BORDER-TOP: #ffff99 3px solid; DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 105%; BACKGROUND: #cccc66; BORDER-LEFT: #ffff99 3px solid; COLOR: navy; BORDER-BOTTOM: black 3px solid; FONT-FAMILY: "Arial", "Times New Roman",sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.boton2 A:active {
+	BORDER-RIGHT: #ffff99 3px solid; BORDER-TOP: black 3px solid; DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 105%; BACKGROUND: #cccc66; BORDER-LEFT: black 3px solid; COLOR: blue; BORDER-BOTTOM: #ffff99 3px solid; FONT-FAMILY: "Arial", "Times New Roman",sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.boton2 A {
+	BORDER-RIGHT: #cccc66 3px solid; BORDER-TOP: #cccc66 3px solid; DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 105%; BACKGROUND: #ffcc33; BORDER-LEFT: #cccc66 3px solid; COLOR: blue; BORDER-BOTTOM: #cccc66 3px solid; FONT-FAMILY: "Arial", "Times New Roman",sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+UL {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-IMAGE: url(/graficas/bolaazul.gif)
+}
+UL UL {
+	LIST-STYLE-IMAGE: url(/graficas/bolaverde.gif)
+}
+UL.bolaazul {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-IMAGE: url(/graficas/ball_blue.gif)
+}
+UL.bolaverde {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-IMAGE: url(/graficas/ball_green.gif)
+}
+UL.bolaroja {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-IMAGE: url(/graficas/bolaroja.gif)
+}
+UL.romboazul {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-IMAGE: url(/graficas/rombo.gif)
+}
+UL.toc {
+	LIST-STYLE-POSITION: inside; LIST-STYLE-IMAGE: url(/graficas/rombo.gif); MARGIN: 5px
+}
+UL.flecha {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-IMAGE: url(/graficas/next.gif)
+}
+.menu {
+	COLOR: black; BACKGROUND-COLOR: #ffcc99
+}
+.menu1 {
+	COLOR: navy; BACKGROUND-COLOR: #ffcc99
+}
+.menu1 A {
+	COLOR: navy; BACKGROUND-COLOR: #ffcc99
+}
+.menuclave {
+	BACKGROUND-COLOR: #ffcc33
+}
+.encabezadotabla {
+	FONT-WEIGHT: bold; BACKGROUND: aqua; TEXT-TRANSFORM: capitalize; COLOR: black; FONT-FAMILY: serif
+}
+.grande {
+	FONT-SIZE: 130%
+}
+.pie {
+	BACKGROUND: aqua
+}
+.chico {
+	FONT-SIZE: 70%; FONT-FAMILY: "Arial", "Helvetica", sans-serif
+}
+.mediano {
+	FONT-SIZE: 9pt; COLOR: #fff8e0; FONT-FAMILY: "Arial", "Helvetica", sans-serif; BACKGROUND-COLOR: transparent
+}
+.algoritmo {
+	BORDER-RIGHT: 0px solid; BORDER-TOP: thin solid; FONT-SIZE: 80%; MARGIN: 10px; BORDER-LEFT: 0px solid; WIDTH: auto; COLOR: black; BORDER-BOTTOM: thin solid; BACKGROUND-COLOR: white
+}
+.comentario {
+	COLOR: green
+}
+.importante {
+	BORDER-RIGHT: navy thin solid; BORDER-TOP: navy thin solid; MARGIN: 10px; BORDER-LEFT: navy thin solid; WIDTH: auto; COLOR: black; BORDER-BOTTOM: navy thin solid; FONT-FAMILY: Arial,sans-serif; BACKGROUND-COLOR: #f0f8ff
+}

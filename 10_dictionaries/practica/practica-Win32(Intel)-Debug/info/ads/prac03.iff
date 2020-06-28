@@ -1,0 +1,63 @@
+SOURCE: ..\..\prac03.ads
+  SRCTIME: 1054662504    Tue Jun 03 16:48:24 2003
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+SRCDEP: src\ada.ada
+  SRCDEPTIME: 918049390    Wed Feb 03 12:43:10 1999
+SRCDEP: src\strings.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\SYSTEM.SPC
+  SRCDEPTIME: 848407450    Tue Nov 19 11:44:10 1996
+SRCDEP: src\unchecked_conversion.ada
+  SRCDEPTIME: 857457980    Tue Mar 04 05:46:20 1997
+SRCDEP: src\rts.spc
+  SRCDEPTIME: 918049420    Wed Feb 03 12:43:40 1999
+SRCDEP: src\sys_config.ads
+  SRCDEPTIME: 902827280    Tue Aug 11 08:21:20 1998
+SRCDEP: src\unbounded.spc
+  SRCDEPTIME: 942838980    Wed Nov 17 10:43:00 1999
+SRCDEP: src\maps.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\characters.dat
+  SRCDEPTIME: 848407420    Tue Nov 19 11:43:40 1996
+SRCDEP: src\characters_latin_1.dat
+  SRCDEPTIME: 848407420    Tue Nov 19 11:43:40 1996
+SRCDEP: src\finalization.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\streams.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: ..\..\arbolbin.ads
+  SRCDEPTIME: 1054224898    Thu May 29 15:14:58 2003
+SRCDEP: ..\..\arbolbin.adb
+  SRCDEPTIME: 1054224894    Thu May 29 15:14:54 2003
+SRCDEP: src\unchecked_deallocation.ada
+  SRCDEPTIME: 857457980    Tue Mar 04 05:46:20 1997
+UNIT: Conjunto_de_palabras
+  UKIND: 7    PKG_DECL
+  DEP: Arbol_Bin
+    DEPKIND: 9    PKG_GENERIC
+    DEPSRC: ..\..\arbolbin.ads
+    DEPSRCTIME: 1054224898    Thu May 29 15:14:58 2003
+  DEP: Ada.Strings.Unbounded
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\unbounded.spc
+    DEPSRCTIME: 942838980    Wed Nov 17 10:43:00 1999
+  DEP: Ada.Strings
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\strings.spc
+    DEPSRCTIME: 848407430    Tue Nov 19 11:43:50 1996
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\ada.ada
+    DEPSRCTIME: 918049390    Wed Feb 03 12:43:10 1999
+  NEED: system.rts.Master_Pkg
+    NEEDKIND: 7    PKG_DECL
+  NEED: system.rts.TGT.Sec_Stack_Pkg
+    NEEDKIND: 7    PKG_DECL
+  NEED: system.rts.Finalization_Pkg
+    NEEDKIND: 7    PKG_DECL
+  NEED: Conjunto_de_palabras
+    NEEDKIND: 8    PKG_BODY
+  FEATURES: 16#8400000000600#(-1,-1,-1,-1,-1,-1)
+  ELABLINKNAME: conjunto_de_palabras__elab_spec
+ENDUNIT

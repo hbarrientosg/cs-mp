@@ -1,0 +1,46 @@
+SOURCE: ..\..\prac03.ads
+  SRCTIME: 1053870628    Sun May 25 12:50:28 2003
+  COMPSW: adacomp SRC -eo -e 50 -m n -mr n -gc -ga
+COMPVER: 3.273
+MAXSEV: 10
+SRCDEP: src\ada.ada
+  SRCDEPTIME: 918049390    Wed Feb 03 12:43:10 1999
+SRCDEP: src\strings.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\SYSTEM.SPC
+  SRCDEPTIME: 848407450    Tue Nov 19 11:44:10 1996
+SRCDEP: src\unchecked_conversion.ada
+  SRCDEPTIME: 857457980    Tue Mar 04 05:46:20 1997
+SRCDEP: src\rts.spc
+  SRCDEPTIME: 918049420    Wed Feb 03 12:43:40 1999
+SRCDEP: src\sys_config.ads
+  SRCDEPTIME: 902827280    Tue Aug 11 08:21:20 1998
+SRCDEP: src\unbounded.spc
+  SRCDEPTIME: 942838980    Wed Nov 17 10:43:00 1999
+SRCDEP: src\maps.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\characters.dat
+  SRCDEPTIME: 848407420    Tue Nov 19 11:43:40 1996
+SRCDEP: src\characters_latin_1.dat
+  SRCDEPTIME: 848407420    Tue Nov 19 11:43:40 1996
+SRCDEP: src\finalization.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+SRCDEP: src\streams.spc
+  SRCDEPTIME: 848407430    Tue Nov 19 11:43:50 1996
+UNIT: Conjunto_de_palabras
+  UKIND: 7    PKG_DECL
+  DEP: Ada.Strings.Unbounded
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\unbounded.spc
+    DEPSRCTIME: 942838980    Wed Nov 17 10:43:00 1999
+  DEP: Ada.Strings
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\strings.spc
+    DEPSRCTIME: 848407430    Tue Nov 19 11:43:50 1996
+  DEP: Ada
+    DEPKIND: 7    PKG_DECL
+    DEPSRC: src\ada.ada
+    DEPSRCTIME: 918049390    Wed Feb 03 12:43:10 1999
+  NEED: Conjunto_de_palabras
+    NEEDKIND: 8    PKG_BODY
+ENDUNIT

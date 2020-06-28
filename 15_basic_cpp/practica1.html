@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Práctica 1: Clases, constructores y sobrecarga de operadores</title>
+  
+  <link href="practica1_files/estilos.css" rel="stylesheet" type="text/css"></head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td class="titulo1">Prácticas de Estructuras de Datos II</td>
+      <td class="titulo2">Práctica 1: Clases, constructores y sobrecarga de
+        operadores<br>
+      (valoración 10%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Objetivos:</h2>
+El objetivo de esta práctica es que el alumno de Estructura de Datos II
+practique el uso de clases, constructores y sobrecarga de operadores en C++. 
+
+<h2>Prerrequisitos:</h2>
+Haber estudiado las <a href="https://www.gedlc.ulpgc.es/docencia/ed_ii/privado0405/documentacion/poo/clases.html">clases en
+C++</a>. <br>
+
+
+<h2>Se pide</h2>
+
+<p>&nbsp;&nbsp;&nbsp; Cree una clase denominada "Fraccion" que represente un número 
+fraccionario y que tenga como funciones miembro las siguientes: </p>
+<ul>
+  <li><i>Constructor: Añada el constructor o los constructores necesarios para 
+  crear una fracción pasándole el numerador y el denominador (en este orden), 
+  que 
+  permita conversiones automáticas de entero a Fraccion y que permita crear 
+  vectores de objetos Fraccion</i> ini<i>cializados a la fracción 0/1.</i></li>
+  <li><b><i>numerador</i></b><i>: Devuelve el numerador de la fracción.</i></li>
+  <li><b><i>denominador</i></b><i>: Devuelve el denominador de la fracción.</i></li>
+  <li><b><i>valor</i></b><i>: Devuelve el valor real (float) de la fracción. </i>
+  En caso de que el denominador sea cero, el resultado de esta operación será FLT_MAX. 
+  Para usar FLT_MAX hay que incluir &lt;cfloat&gt; y usar el espacio de nombres 
+  std. </li>
+  <li><i>Operador -: Función que devuelve una fracción que sea resultado de la 
+  resta de la fracción actual menos una pasada por parámetro.</i></li>
+  <li><i>Operador /: Análogo a la resta.</i></li>
+  <li><i><b>inversa</b></i>: <i>Función que devuelve la fracción inversa de la actual.</i></li>
+  <li><b>numeroMixto</b>: Para una fracción A/B el número mixto se define como 
+  la terna (C,D,B) donde A/B=C+D/B siendo C la parte entera del cociente 
+  entre A y B, y D el resto. Escriba un procedimiento que devuelva en tres 
+  parámetros C, D y B, el número mixto de la fracción. En caso de que B sea cero 
+  se debe devolver INT_MAX como C y D, y B igual a cero. Para usar INT_MAX hay que incluir &lt;climits&gt; 
+  y usar el espacio de nombres std</li>
+  <li><b>elevadoA</b>: Escriba una función que pasándole un entero devuelva una 
+  fracción que sea el resultado de elevar la fracción a dicho entero.</li>
+  <li><i>Añada las funciones miembro que considere oportunas para alcanzar los 
+  objetivos de funcionamiento. No añada funciones o procedimientos que no sean 
+  para apoyar las solicitadas.</i></li>
+</ul>
+<p>Además, escriba las siguientes funciones no miembros:</p>
+<ul>
+  <li><i>Operador +: Análogo a la resta pero una función <b>no perteneciente a la 
+  clase</b>.</i></li>
+  <li><i>Operador *: Análogo a la resta pero una función <b>no perteneciente a la 
+  clase.</b></i></li>
+</ul>
+<p><b>Todas las operaciones anteriores deben poderse realizar con objetos 
+constantes.</b></p>
+<p><b>Exceptuando el constructor o constructores ninguna función puede modificar 
+una fracción</b>.</p>
+<p>Las fracciones deben normalizarse en el momento de su inicialización. Una 
+fracción se dice que está normalizada si:</p>
+<ol>
+  <li>El numerador y el denominador no tienen factores comunes.</li>
+  <li>El denominador siempre es positivo</li>
+  <li>Si la fracción representa un valor negativo, el signo lo tiene el 
+  numerador.</li>
+</ol>
+<p>Para calcular el máximo común divisor se puede emplear el algoritmo de Euclides que se muestra 
+a continuación:</p><span class="grande">
+<pre class="algoritmo"><b>Función Entero</b> Euclides(m,n)
+<b>variables entrada entero</b> m,n
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; local entero t
+{Precondición: n &gt;= 1 ^ m &gt;= 0}
+<b>mientras</b> m &gt;0 <b>hacer</b>
+&nbsp;&nbsp;&nbsp; t &lt;- n mod m <span class="comentario">{devuelve el resto de la división entre n y m} </span>
+&nbsp;&nbsp;&nbsp; n &lt;- m
+&nbsp;&nbsp;&nbsp; m &lt;- t
+<b>fin mientras</b>
+<b>devolver</b> n</pre></span>
+<p>Para calcular el valor absoluto se puede emplear la función abs(<b>int</b>), 
+declarada en &lt;cstdlib&gt;, y que nos devuelve el valor absoluto del entero pasado.</p>
+
+<p>Escriba la clase Fraccion en los ficheros fraccion.h y fraccion.cpp. 
+Implemente todas las funciones y/o procedimientos en fraccion.cpp, en el fichero 
+fraccion.h no se debe implementar ninguna función.</p>
+
+<h2>Ejemplo de uso de Fraccion</h2>
+<span class="grande">
+<pre class="algoritmo"><b>#include</b> "fraccion.h"
+<b>int</b> main()
+{
+    <b>const</b> <b>int</b> NV=10;
+    Fraccion a;
+    Fraccion vector[NV];
+    <b>const</b> Fraccion b(2,3), c(-1);
+    a=b-c;
+    a=a+b/3;
+    <b>for</b>(<b>int</b> i=1; i&lt; NV; i++) vector[i]=vector[i-1]+b+a;
+    <b>return</b> 0;
+}</pre>
+</span>
+<h2>Pruebas a realizar</h2>
+Escriba un programa principal en un fichero denominado <strong>pruebafraccion.cpp</strong>
+que compruebe la funcionalidad de cada una de las operaciones de Fraccion.<h2>
+Ficheros a entregar</h2>
+<p>Los ficheros a entregar son <b>fraccion.h</b>, <b>fraccion.cpp</b> y <strong>
+pruebafraccion.cpp.</strong></p>
+<hr width="100%">
+<a href="https://www.gedlc.ulpgc.es/cgi-bin/gap/ed2.20042005/gap?menu"> <img src="practica1_files/gap" alt="GAP" border="0"></a></body></html>
